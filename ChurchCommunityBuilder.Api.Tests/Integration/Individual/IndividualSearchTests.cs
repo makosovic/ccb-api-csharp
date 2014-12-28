@@ -28,5 +28,16 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration {
 
             results.Request.Parameters.Count.ShouldBe(3);
         }
+
+        [Test]
+        public void integration_individual_search_search_by_street_address() {
+            var qo = new IndividualQO();
+            qo.ZipCode = "76262";
+            qo.State = "TX";
+
+            var results = _apiClient.Individuals.Search(qo);
+
+            results.Request.Parameters.Count.ShouldBe(3);
+        }
     }
 }

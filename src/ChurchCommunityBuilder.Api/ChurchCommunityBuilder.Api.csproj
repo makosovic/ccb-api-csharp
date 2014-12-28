@@ -53,7 +53,7 @@
     <Compile Include="Exceptions\GenericException.cs" />
     <Compile Include="Exceptions\PropertyNotAllowedException.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
-    <Compile Include="People\Entity\FamilyMembers.cs" />
+    <Compile Include="People\Entity\FamilyMember.cs" />
     <Compile Include="People\Entity\Individual.cs" />
     <Compile Include="People\Entity\IndividualCollection.cs" />
     <Compile Include="People\QueryObject\IndividualQO.cs" />
