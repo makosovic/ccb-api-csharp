@@ -13,6 +13,7 @@ namespace ChurchCommunityBuilder.Api {
         private string _churchCode;
         private const string API_URL = "https://{0}.ccbchurch.com/api.php";
         private ChurchCommunityBuilder.Api.People.Sets.Individuals _individualSet;
+        private ChurchCommunityBuilder.Api.People.Sets.Families _familySet;
         #endregion Declarations
 
         public ApiClient(string churchCode, string username, string password) {
@@ -29,6 +30,16 @@ namespace ChurchCommunityBuilder.Api {
                 }
 
                 return _individualSet;
+            }
+        }
+
+        public ChurchCommunityBuilder.Api.People.Sets.Families Families {
+            get {
+                if (_familySet == null) {
+                    _familySet = new People.Sets.Families(string.Format(API_URL, _churchCode), _username, _password);
+                }
+
+                return _familySet;
             }
         }
         #endregion Sets

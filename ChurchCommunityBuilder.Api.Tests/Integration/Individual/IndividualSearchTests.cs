@@ -26,7 +26,8 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration {
 
             var results = _apiClient.Individuals.Search(qo);
 
-            results.Request.Parameters.Count.ShouldBe(3);
+            results.Individuals.Count.ShouldBeGreaterThan(0);
+            results.Individuals[0].FamilyMembers.Count.ShouldBeGreaterThan(0);
         }
 
         [Test]
@@ -37,7 +38,18 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration {
 
             var results = _apiClient.Individuals.Search(qo);
 
-            results.Request.Parameters.Count.ShouldBe(3);
+            results.Individuals.Count.ShouldBeGreaterThan(1);
+        }
+
+        [Test]
+        public void integration_individual_search_search_by_name_first_three_letters() {
+            var qo = new IndividualQO();
+            qo.FirstName = "cha";
+            qo.LastName = "mey";
+
+            var results = _apiClient.Individuals.Search(qo);
+
+            results.Individuals.Count.ShouldBeGreaterThan(0);
         }
     }
 }

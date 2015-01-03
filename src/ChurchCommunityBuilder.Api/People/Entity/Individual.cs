@@ -63,5 +63,21 @@ namespace ChurchCommunityBuilder.Api.People.Entity {
 
         [XmlElement("email")]
         public string Email { get; set; }
+
+        [XmlElement("addresses")]
+        public List<Address> Addresses { get; set; }
+
+        [XmlArrayItem("phone", typeof(Phone))]
+        [XmlArray("phones")]
+        public List<Phone> Phones { get; set; }
+
+        [XmlElement("gender")]
+        public string Gender { get; set; }
+
+        [XmlElement("marital_status")]
+        public string MaritalStatus { get; set; }
+
+        [XmlElement("birthday")]
+        public DateTime Birthday { get; set; }
     }
 }

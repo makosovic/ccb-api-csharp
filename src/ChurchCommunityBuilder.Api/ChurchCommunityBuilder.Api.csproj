@@ -53,10 +53,16 @@
     <Compile Include="Exceptions\GenericException.cs" />
     <Compile Include="Exceptions\PropertyNotAllowedException.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
+    <Compile Include="People\Entity\Address.cs" />
+    <Compile Include="People\Entity\Family.cs" />
+    <Compile Include="People\Entity\FamilyCollection.cs" />
     <Compile Include="People\Entity\FamilyMember.cs" />
     <Compile Include="People\Entity\Individual.cs" />
     <Compile Include="People\Entity\IndividualCollection.cs" />
+    <Compile Include="People\Entity\Phone.cs" />
+    <Compile Include="People\QueryObject\FamilyQO.cs" />
     <Compile Include="People\QueryObject\IndividualQO.cs" />
+    <Compile Include="People\Sets\Families.cs" />
     <Compile Include="People\Sets\Individuals.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryObject.cs" />
