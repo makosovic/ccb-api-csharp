@@ -32,6 +32,22 @@ namespace ChurchCommunityBuilder.Api {
             _password = password;
         }
 
+        public T Execute(string serviceName) {
+            this._parameters.Add("srv", serviceName);
+            var request = CreateRestRequest(Method.GET, _baseUrl);
+
+            var results = ExecuteGenericRequest<T>(request);
+            return results.Data;
+        }
+
+        public S Execute<S>(string serviceName) where S : new() {
+            this._parameters.Add("srv", serviceName);
+            var request = CreateRestRequest(Method.GET, _baseUrl);
+
+            var results = ExecuteGenericRequest<S>(request);
+            return results.Data;
+        }
+
         public S Execute<S>(QueryObject qo, string serviceName) where S : new() {
             this._parameters.Add("srv", serviceName);
             var request = CreateRestRequest(Method.GET, _baseUrl);

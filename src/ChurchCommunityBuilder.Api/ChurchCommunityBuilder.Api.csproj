@@ -48,12 +48,16 @@
     <Compile Include="Attributes\QOAttribute.cs" />
     <Compile Include="BaseApiSet.cs" />
     <Compile Include="Entity\Lookup.cs" />
+    <Compile Include="Entity\LookupType.cs" />
+    <Compile Include="Entity\LookupTypeCollection.cs" />
     <Compile Include="Entity\Parameter.cs" />
     <Compile Include="Entity\Request.cs" />
     <Compile Include="Exceptions\GenericException.cs" />
     <Compile Include="Exceptions\PropertyNotAllowedException.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="People\Entity\Address.cs" />
+    <Compile Include="People\Entity\Campus.cs" />
+    <Compile Include="People\Entity\CampusCollection.cs" />
     <Compile Include="People\Entity\Family.cs" />
     <Compile Include="People\Entity\FamilyCollection.cs" />
     <Compile Include="People\Entity\FamilyMember.cs" />
@@ -62,11 +66,20 @@
     <Compile Include="People\Entity\Phone.cs" />
     <Compile Include="People\QueryObject\FamilyQO.cs" />
     <Compile Include="People\QueryObject\IndividualQO.cs" />
+    <Compile Include="People\Sets\Campuses.cs" />
     <Compile Include="People\Sets\Families.cs" />
     <Compile Include="People\Sets\Individuals.cs" />
+    <Compile Include="People\Sets\MembershipTypes.cs" />
+    <Compile Include="Processes\Entity\Process.cs" />
+    <Compile Include="Processes\Entity\ProcessCollection.cs" />
+    <Compile Include="Processes\QueryObject\ProcessQO.cs" />
+    <Compile Include="Processes\Sets\Processes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryObject.cs" />
     <Compile Include="Entity\Response.cs" />
+    <Compile Include="Realms\BaseRealm.cs" />
+    <Compile Include="Realms\PeopleRealm.cs" />
+    <Compile Include="Realms\ProcessRealm.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

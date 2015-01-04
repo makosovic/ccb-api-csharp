@@ -9,7 +9,8 @@ using System.Xml.Serialization;
 
 namespace ChurchCommunityBuilder.Api.People.Entity {
     public class FamilyCollection : Response {
-        [XmlElement("families")]
+        [XmlArrayItem("family", typeof(Family))]
+        [XmlArray("families")]
         public List<Family> Families { get; set; }
     }
 }

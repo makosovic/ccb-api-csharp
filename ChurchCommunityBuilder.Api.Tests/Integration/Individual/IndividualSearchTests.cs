@@ -24,7 +24,7 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration {
             qo.FirstName = "chad";
             qo.LastName = "meyer";
 
-            var results = _apiClient.Individuals.Search(qo);
+            var results = _apiClient.People.Individuals.Search(qo);
 
             results.Individuals.Count.ShouldBeGreaterThan(0);
             results.Individuals[0].FamilyMembers.Count.ShouldBeGreaterThan(0);
@@ -36,7 +36,7 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration {
             qo.ZipCode = "76262";
             qo.State = "TX";
 
-            var results = _apiClient.Individuals.Search(qo);
+            var results = _apiClient.People.Individuals.Search(qo);
 
             results.Individuals.Count.ShouldBeGreaterThan(1);
         }
@@ -47,7 +47,17 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration {
             qo.FirstName = "cha";
             qo.LastName = "mey";
 
-            var results = _apiClient.Individuals.Search(qo);
+            var results = _apiClient.People.Individuals.Search(qo);
+
+            results.Individuals.Count.ShouldBeGreaterThan(0);
+        }
+
+        [Test]
+        public void integration_individual_search_search_by_name_first_three_letters_first_name() {
+            var qo = new IndividualQO();
+            qo.FirstName = "cha";
+
+            var results = _apiClient.People.Individuals.Search(qo);
 
             results.Individuals.Count.ShouldBeGreaterThan(0);
         }

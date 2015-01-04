@@ -78,6 +78,9 @@ namespace ChurchCommunityBuilder.Api.People.Entity {
         public string MaritalStatus { get; set; }
 
         [XmlElement("birthday")]
-        public DateTime Birthday { get; set; }
+        public DateTime? Birthday { get; set; }
+
+        [XmlElement("membership_type")]
+        public Lookup MembershipType { get; set; }
     }
 }

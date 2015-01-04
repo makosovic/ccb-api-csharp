@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using ChurchCommunityBuilder.Api.Attributes;
 
-namespace ChurchCommunityBuilder.Api.People.QueryObject {
-    public class FamilyQO : ChurchCommunityBuilder.Api.QueryObject {
-        [QO("family_id")]
-        public int? FamilyID { get; set; }
+namespace ChurchCommunityBuilder.Api.Processes.QueryObject {
+    public class ProcessQO : ChurchCommunityBuilder.Api.QueryObject {
+        [QO("campus_id")]
+        public int? CampusID { get; set; }
 
         [QO("modified_since")]
         public DateTime? ModifiedSince { get; set; }

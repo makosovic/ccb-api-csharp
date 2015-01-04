@@ -7,11 +7,14 @@ using System.Xml;
 using System.Xml.Serialization;
 
 namespace ChurchCommunityBuilder.Api.Entity {
-    public class Lookup {
-        [XmlAttribute("id")]
+    public class LookupType {
+        [XmlElement("id")]
         public int? ID { get; set; }
 
-        [XmlText]
-        public string Value { get; set; }
+        [XmlElement("name")]
+        public string Name { get; set; }
+
+        [XmlElement("order")]
+        public int Order { get; set; }
     }
 }
