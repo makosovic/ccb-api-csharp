@@ -1,7 +1,0 @@
-D:\dev\ccb-api-csharp\src\ChurchCommunityBuilder.Api\bin\Debug\ChurchCommunityBuilder.Api.dll
-D:\dev\ccb-api-csharp\src\ChurchCommunityBuilder.Api\bin\Debug\ChurchCommunityBuilder.Api.pdb
-D:\dev\ccb-api-csharp\src\ChurchCommunityBuilder.Api\bin\Debug\RestSharp.dll
-D:\dev\ccb-api-csharp\src\ChurchCommunityBuilder.Api\bin\Debug\RestSharp.xml
-D:\dev\ccb-api-csharp\src\ChurchCommunityBuilder.Api\obj\Debug\ChurchCommunityBuilder.Api.dll
-D:\dev\ccb-api-csharp\src\ChurchCommunityBuilder.Api\obj\Debug\ChurchCommunityBuilder.Api.pdb
-D:\dev\ccb-api-csharp\src\ChurchCommunityBuilder.Api\obj\Debug\ChurchCommunityBuilder.Api.csprojResolveAssemblyReference.cache
