@@ -7,6 +7,9 @@ using ChurchCommunityBuilder.Api.Attributes;
 
 namespace ChurchCommunityBuilder.Api.People.QueryObject {
     public class IndividualQO : ChurchCommunityBuilder.Api.QueryObject {
+        [QO("individual_id")]
+        public int? IndividualID { get; set; }
+
         [QO("first_name")]
         public string FirstName { get; set; }
 
