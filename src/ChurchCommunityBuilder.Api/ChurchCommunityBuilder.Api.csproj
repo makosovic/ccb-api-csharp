@@ -32,8 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="RestSharp">
-      <HintPath>..\..\packages\RestSharp.105.0.1\lib\net4\RestSharp.dll</HintPath>
+    <Reference Include="RestSharp, Version=105.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\focus\packages\RestSharp.105.0.1\lib\net4\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -72,6 +73,8 @@
     <Compile Include="People\Sets\MembershipTypes.cs" />
     <Compile Include="Processes\Entity\Process.cs" />
     <Compile Include="Processes\Entity\ProcessCollection.cs" />
+    <Compile Include="Processes\Entity\ProcessQueue.cs" />
+    <Compile Include="Processes\Entity\ProcessQueueCollection.cs" />
     <Compile Include="Processes\QueryObject\ProcessQO.cs" />
     <Compile Include="Processes\Sets\Processes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

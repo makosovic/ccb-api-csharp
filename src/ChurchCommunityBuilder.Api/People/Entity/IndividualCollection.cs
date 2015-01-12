@@ -9,6 +9,10 @@ using System.Xml.Serialization;
 
 namespace ChurchCommunityBuilder.Api.People.Entity {
     public class IndividualCollection : Response {
+        public IndividualCollection() {
+            this.Individuals = new List<Individual>();
+        }
+
         [XmlArrayItem("individual", typeof(Individual))]
         [XmlArray("individuals")]
         public List<Individual> Individuals { get; set; }

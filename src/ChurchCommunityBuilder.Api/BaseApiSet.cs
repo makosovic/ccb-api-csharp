@@ -12,19 +12,9 @@ namespace ChurchCommunityBuilder.Api {
         private string _username;
         private string _password;
         private readonly ContentType _contentType;
-        private IDictionary<string, string> _parameters = new Dictionary<string, string>();
+        private IDictionary<string, string> _parameters;
 
         public string BaseUrl { get { return _baseUrl; } }
-        private string _serviceName;
-        protected virtual string ServiceName {
-            get {
-                if (string.IsNullOrEmpty(_serviceName)) {
-                    throw new NotImplementedException("The property ServiceName has no value on the BaseApiSet.");
-                }
-                return _serviceName;
-            }
-            set { this._serviceName = value; }
-        }
             
         public BaseApiSet(string baseUrl, string username, string password) {
             _baseUrl = baseUrl;
@@ -33,6 +23,7 @@ namespace ChurchCommunityBuilder.Api {
         }
 
         public T Execute(string serviceName) {
+            this._parameters = new Dictionary<string, string>();
             this._parameters.Add("srv", serviceName);
             var request = CreateRestRequest(Method.GET, _baseUrl);
 
@@ -41,6 +32,7 @@ namespace ChurchCommunityBuilder.Api {
         }
 
         public S Execute<S>(string serviceName) where S : new() {
+            this._parameters = new Dictionary<string, string>();
             this._parameters.Add("srv", serviceName);
             var request = CreateRestRequest(Method.GET, _baseUrl);
 
@@ -49,6 +41,7 @@ namespace ChurchCommunityBuilder.Api {
         }
 
         public S Execute<S>(QueryObject qo, string serviceName) where S : new() {
+            this._parameters = new Dictionary<string, string>();
             this._parameters.Add("srv", serviceName);
             var request = CreateRestRequest(Method.GET, _baseUrl);
 
@@ -67,6 +60,9 @@ namespace ChurchCommunityBuilder.Api {
 
             if ((int)response.StatusCode > 300) {
                 throw new Exception(response.StatusDescription);
+            }
+            else if (!string.IsNullOrEmpty(response.ErrorMessage)) {
+                throw new Exception(response.ErrorMessage);
             }
 
             return response;

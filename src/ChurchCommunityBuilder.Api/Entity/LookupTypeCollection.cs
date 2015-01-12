@@ -9,6 +9,10 @@ using System.Xml.Serialization;
 
 namespace ChurchCommunityBuilder.Api.Entity {
     public class LookupTypeCollection : Response {
+        public LookupTypeCollection() {
+            this.Items = new List<LookupType>();
+        }
+
         [XmlArrayItem("items", typeof(LookupType))]
         [XmlArray("item")]
         public List<LookupType> Items { get; set; }
