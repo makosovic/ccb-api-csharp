@@ -7,11 +7,11 @@ using ChurchCommunityBuilder.Api.People.QueryObject;
 using ChurchCommunityBuilder.Api.People.Entity;
 
 namespace ChurchCommunityBuilder.Api.People.Sets {
-    public class Campuses: BaseApiSet<Family> {
+    public class Campuses : BaseApiSet<CampusCollection> {
         public Campuses(string baseUrl, string username, string password) : base(baseUrl, username, password) { }
 
         public CampusCollection List() {
-            return this.Execute<CampusCollection>("campus_list");
+            return this.Execute("campus_list");
         }
     }
 }

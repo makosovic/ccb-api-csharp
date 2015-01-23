@@ -6,12 +6,21 @@ using System.Threading.Tasks;
 using ChurchCommunityBuilder.Api.Entity;
 using System.Xml;
 using System.Xml.Serialization;
+using ChurchCommunityBuilder.Api.People.Enum;
 
 namespace ChurchCommunityBuilder.Api.People.Entity {
     [XmlRoot("individual")]
     public class Individual {
+        public Individual() {
+            this.Campus = new Lookup();
+            this.Family = new Lookup();
+            this.FamilyMembers = new List<FamilyMember>();
+            this.Addresses = new List<Address>();
+            this.Phones = new List<Phone>();
+            this.MembershipType = new Lookup();
+        }
         [XmlAttribute("id")]
-        public int ID { get; set; }
+        public int? ID { get; set; }
 
         [XmlElement("sync_id")]
         public string SyncID { get; set; }
@@ -31,8 +40,50 @@ namespace ChurchCommunityBuilder.Api.People.Entity {
         [XmlElement("family_image")]
         public string FamilyImage { get; set; }
 
+        [XmlIgnore]
+        public FamilyPosition? FamilyPosition {
+            get {
+                if (!string.IsNullOrEmpty(this.FamilyPositionString)) {
+                    switch (this.FamilyPositionString.ToLower()) {
+                        case "primary contact":
+                            return Enum.FamilyPosition.PrimaryContact;
+                        case "head of household":
+                            return Enum.FamilyPosition.HeadOfHousehold;
+                        case "spouse":
+                            return Enum.FamilyPosition.Spouse;
+                        case "child":
+                            return Enum.FamilyPosition.Child;
+                        case "other":
+                            return Enum.FamilyPosition.Other;
+                            
+                    }
+                }
+                return null;
+            }
+            set {
+                switch (value) {
+                    case Enum.FamilyPosition.PrimaryContact:
+                        this.FamilyPositionString = "Primary Contact";
+                        break;
+                    case Enum.FamilyPosition.HeadOfHousehold:
+                        this.FamilyPositionString = "Head of Household";
+                        break;
+                    case Enum.FamilyPosition.Spouse:
+                        this.FamilyPositionString = "Spouse";
+                        break;
+                    case Enum.FamilyPosition.Child:
+                        this.FamilyPositionString = "Child";
+                        break;
+                    case Enum.FamilyPosition.Other:
+                        this.FamilyPositionString = "Other";
+                        break;
+
+                }
+            }
+        }
+
         [XmlElement("family_position")]
-        public string FamilyPosition { get; set; }
+        public string FamilyPositionString { get; set; }
 
         [XmlElement("family_member")]
         public List<FamilyMember> FamilyMembers { get; set; }
@@ -80,7 +131,116 @@ namespace ChurchCommunityBuilder.Api.People.Entity {
         [XmlElement("birthday")]
         public DateTime? Birthday { get; set; }
 
+        [XmlElement("anniversary")]
+        public DateTime? Anniversary { get; set; }
+
+        [XmlElement("deceased")]
+        public DateTime? Deceased { get; set; }
+
+        [XmlElement("membership_date")]
+        public DateTime? MembershipDate { get; set; }
+
+        [XmlElement("membership_end")]
+        public DateTime? MembershipEnd { get; set; }
+
         [XmlElement("membership_type")]
         public Lookup MembershipType { get; set; }
+
+        public string GetFormValues() {
+            bool needsAnd = false;
+            var sb = new System.Text.StringBuilder();
+
+            if (!string.IsNullOrEmpty(this.FirstName)) {
+                if (needsAnd) {
+                    sb.Append("&");
+                }
+                else {
+                    needsAnd = true;
+                }
+                sb.AppendFormat("first_name={0}", this.FirstName);
+            }
+
+            if (!string.IsNullOrEmpty(this.LastName)) {
+                if (needsAnd) {
+                    sb.Append("&");
+                }
+                else {
+                    needsAnd = true;
+                }
+                sb.AppendFormat("last_name={0}", this.LastName);
+            }
+
+            if (needsAnd) {
+                sb.Append("&");
+            }
+            else {
+                needsAnd = true;
+            }
+
+            sb.AppendFormat("middle_name={0}", this.MiddleName);
+            sb.AppendFormat("&legal_first_name={0}", this.LegalFirstName);
+            sb.AppendFormat("&sync_id={0}", this.SyncID);
+            sb.AppendFormat("&other_id={0}", this.OtherID);
+            sb.AppendFormat("&salutation={0}", this.Salutation);
+            sb.AppendFormat("&suffix={0}", this.Suffix);
+
+            if (Campus != null && Campus.ID.HasValue) {
+                sb.AppendFormat("&campus_id={0}", this.Campus.ID);
+            }
+
+            if (this.Family != null && this.Family.ID.HasValue) {
+                sb.AppendFormat("&family_id={0}", this.Family.ID);
+            }
+
+            if (!string.IsNullOrEmpty(this.FamilyPositionString)) {
+                if (this.FamilyPositionString.ToLower() == "head of household" || this.FamilyPositionString.ToLower() == "primary contact") {
+                    sb.AppendFormat("&family_position={0}", "h");
+                }
+                else if (this.FamilyPositionString.ToLower() == "spouse") {
+                    sb.AppendFormat("&family_position={0}", "s");
+                }
+                else if (this.FamilyPositionString.ToLower() == "other") {
+                    sb.AppendFormat("&family_position={0}", "o");
+                }
+                else if (this.FamilyPositionString.ToLower() == "child") {
+                    sb.AppendFormat("&family_position={0}", "c");
+                }
+            }
+
+            sb.AppendFormat("&gender={0}", this.Gender);
+            sb.AppendFormat("&birthday={0}", this.Birthday.HasValue ? this.Birthday.Value.ToString("yyyy-mm-dd") : "");
+            sb.AppendFormat("&anniversary={0}", this.Anniversary.HasValue ? this.Anniversary.Value.ToString("yyyy-mm-dd") : "");
+            sb.AppendFormat("&deceased={0}", this.Deceased.HasValue ? this.Deceased.Value.ToString("yyyy-mm-dd") : "");
+            sb.AppendFormat("&membership_date={0}", this.MembershipDate.HasValue ? this.MembershipDate.Value.ToString("yyyy-mm-dd") : "");
+            sb.AppendFormat("&membership_end={0}", this.MembershipEnd.HasValue ? this.MembershipEnd.Value.ToString("yyyy-mm-dd") : "");
+            sb.AppendFormat("&membership_type_id={0}", this.MembershipType != null && this.MembershipType.ID.HasValue ? this.MembershipType.ID.Value.ToString() : "");
+            sb.AppendFormat("&giving_number={0}", this.GivingNumber);
+
+            if (!string.IsNullOrEmpty(Email) && Email.Contains('@') && Email.Contains('.')) {
+                sb.AppendFormat("&email={0}", this.Email);
+            }
+            else {
+                sb.AppendFormat("&email={0}", "");
+            }
+
+            if (this.Addresses != null && this.Addresses.Count > 0) {
+                foreach (var current in Addresses) {
+                    var addressType = current.Type;
+
+                    sb.AppendFormat("&{0}_street_address={1}", current.Type, current.Line1 + "" + current.Line2);
+                    sb.AppendFormat("&{0}_city={1}", current.Type, current.City);
+                    sb.AppendFormat("&{0}_state={1}", current.Type, current.State.ToUpper());
+                    sb.AppendFormat("&{0}_zip={1}", current.Type, current.Zip);
+                }
+            }
+
+            if (this.Phones != null && this.Phones.Count > 0) {
+                foreach (var current in this.Phones) {
+                    sb.AppendFormat("&{0}_phone={1}", current.Type, current.Value);
+                }
+            }
+
+            return sb.ToString();
+        }
     }
 }

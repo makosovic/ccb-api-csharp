@@ -7,7 +7,7 @@ using ChurchCommunityBuilder.Api.Processes.Entity;
 using ChurchCommunityBuilder.Api.Processes.QueryObject;
 
 namespace ChurchCommunityBuilder.Api.Processes.Sets {
-    public class Processes : BaseApiSet<Process> {
+    public class Processes : BaseApiSet<ProcessCollection> {
         public Processes(string baseUrl, string username, string password) : base(baseUrl, username, password) { }
 
         public ProcessCollection List(int? campusID = null, DateTime? modifiedSince = null) {
@@ -16,8 +16,14 @@ namespace ChurchCommunityBuilder.Api.Processes.Sets {
         }
 
         public ProcessCollection List(ProcessQO qo) {
-            return this.Execute<ProcessCollection>(qo, "process_list");
+            return this.Execute("process_list", qo);
         }
 
+        public Queue AddPersonToQueue(string individualID, string queueID) {
+            var paramters = new Dictionary<string, string>();
+            paramters.Add("individual_id", individualID);
+            paramters.Add("queue_id", queueID);
+            return this.Execute<Queue>("add_individual_to_queue", paramters);
+        }
     }
 }

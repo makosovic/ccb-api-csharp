@@ -63,6 +63,7 @@
     <Compile Include="Integration\Family\FamilyListTest.cs" />
     <Compile Include="Integration\Individual\IndividualSearchTests.cs" />
     <Compile Include="Integration\Individual\MembershipTypeListTests.cs" />
+    <Compile Include="Integration\Individual\UpdateIndividualTest.cs" />
     <Compile Include="Integration\Process\ProcessListTests.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

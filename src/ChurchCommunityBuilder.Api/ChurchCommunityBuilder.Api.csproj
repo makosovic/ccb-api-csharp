@@ -43,11 +43,13 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiClient.cs" />
     <Compile Include="Attributes\QOAttribute.cs" />
     <Compile Include="BaseApiSet.cs" />
+    <Compile Include="Entity\BaseEntity.cs" />
     <Compile Include="Entity\Lookup.cs" />
     <Compile Include="Entity\LookupType.cs" />
     <Compile Include="Entity\LookupTypeCollection.cs" />
@@ -65,6 +67,7 @@
     <Compile Include="People\Entity\Individual.cs" />
     <Compile Include="People\Entity\IndividualCollection.cs" />
     <Compile Include="People\Entity\Phone.cs" />
+    <Compile Include="People\Enum\FamilyPosition.cs" />
     <Compile Include="People\QueryObject\FamilyQO.cs" />
     <Compile Include="People\QueryObject\IndividualQO.cs" />
     <Compile Include="People\Sets\Campuses.cs" />
