@@ -7,6 +7,7 @@ using ChurchCommunityBuilder.Api.Entity;
 using System.Xml;
 using System.Xml.Serialization;
 using ChurchCommunityBuilder.Api.People.Enum;
+using ChurchCommunityBuilder.Api.Util;
 
 namespace ChurchCommunityBuilder.Api.People.Entity {
     [XmlRoot("individual")]
@@ -147,100 +148,80 @@ namespace ChurchCommunityBuilder.Api.People.Entity {
         public Lookup MembershipType { get; set; }
 
         public string GetFormValues() {
-            bool needsAnd = false;
-            var sb = new System.Text.StringBuilder();
+            var formValues = new FormValuesBuilder();
 
             if (!string.IsNullOrEmpty(this.FirstName)) {
-                if (needsAnd) {
-                    sb.Append("&");
-                }
-                else {
-                    needsAnd = true;
-                }
-                sb.AppendFormat("first_name={0}", this.FirstName);
+                formValues.Add("first_name", this.FirstName);
             }
 
             if (!string.IsNullOrEmpty(this.LastName)) {
-                if (needsAnd) {
-                    sb.Append("&");
-                }
-                else {
-                    needsAnd = true;
-                }
-                sb.AppendFormat("last_name={0}", this.LastName);
+                formValues.Add("last_name", this.LastName);
             }
 
-            if (needsAnd) {
-                sb.Append("&");
-            }
-            else {
-                needsAnd = true;
-            }
-
-            sb.AppendFormat("middle_name={0}", this.MiddleName);
-            sb.AppendFormat("&legal_first_name={0}", this.LegalFirstName);
-            sb.AppendFormat("&sync_id={0}", this.SyncID);
-            sb.AppendFormat("&other_id={0}", this.OtherID);
-            sb.AppendFormat("&salutation={0}", this.Salutation);
-            sb.AppendFormat("&suffix={0}", this.Suffix);
+            formValues.Add("middle_name", this.MiddleName)
+                .Add("legal_first_name", this.LegalFirstName)
+                .Add("sync_id", this.SyncID)
+                .Add("other_id", this.OtherID)
+                .Add("salutation", this.Salutation)
+                .Add("suffix", this.Suffix);
 
             if (Campus != null && Campus.ID.HasValue) {
-                sb.AppendFormat("&campus_id={0}", this.Campus.ID);
+                formValues.Add("campus_id", this.Campus.ID.ToString());
             }
 
             if (this.Family != null && this.Family.ID.HasValue) {
-                sb.AppendFormat("&family_id={0}", this.Family.ID);
+                formValues.Add("family_id", this.Family.ID);
             }
 
             if (!string.IsNullOrEmpty(this.FamilyPositionString)) {
                 if (this.FamilyPositionString.ToLower() == "head of household" || this.FamilyPositionString.ToLower() == "primary contact") {
-                    sb.AppendFormat("&family_position={0}", "h");
+                    formValues.Add("family_position", "h");
                 }
                 else if (this.FamilyPositionString.ToLower() == "spouse") {
-                    sb.AppendFormat("&family_position={0}", "s");
+                    formValues.Add("family_position", "s");
                 }
                 else if (this.FamilyPositionString.ToLower() == "other") {
-                    sb.AppendFormat("&family_position={0}", "o");
+                    formValues.Add("family_position", "o");
                 }
                 else if (this.FamilyPositionString.ToLower() == "child") {
-                    sb.AppendFormat("&family_position={0}", "c");
+                    formValues.Add("family_position", "c");
                 }
             }
 
-            sb.AppendFormat("&gender={0}", this.Gender);
-            sb.AppendFormat("&birthday={0}", this.Birthday.HasValue ? this.Birthday.Value.ToString("yyyy-mm-dd") : "");
-            sb.AppendFormat("&anniversary={0}", this.Anniversary.HasValue ? this.Anniversary.Value.ToString("yyyy-mm-dd") : "");
-            sb.AppendFormat("&deceased={0}", this.Deceased.HasValue ? this.Deceased.Value.ToString("yyyy-mm-dd") : "");
-            sb.AppendFormat("&membership_date={0}", this.MembershipDate.HasValue ? this.MembershipDate.Value.ToString("yyyy-mm-dd") : "");
-            sb.AppendFormat("&membership_end={0}", this.MembershipEnd.HasValue ? this.MembershipEnd.Value.ToString("yyyy-mm-dd") : "");
-            sb.AppendFormat("&membership_type_id={0}", this.MembershipType != null && this.MembershipType.ID.HasValue ? this.MembershipType.ID.Value.ToString() : "");
-            sb.AppendFormat("&giving_number={0}", this.GivingNumber);
+            formValues.Add("gender", this.Gender)
+                .Add("birthday", this.Birthday.HasValue ? this.Birthday.Value.ToString("yyyy-mm-dd") : "")
+                .Add("anniversary", this.Anniversary.HasValue ? this.Anniversary.Value.ToString("yyyy-mm-dd") : "")
+                .Add("deceased", this.Deceased.HasValue ? this.Deceased.Value.ToString("yyyy-mm-dd") : "")
+                .Add("membership_date", this.MembershipDate.HasValue ? this.MembershipDate.Value.ToString("yyyy-mm-dd") : "")
+                .Add("membership_end", this.MembershipEnd.HasValue ? this.MembershipEnd.Value.ToString("yyyy-mm-dd") : "")
+                .Add("membership_type_id", this.MembershipType != null && this.MembershipType.ID.HasValue ? this.MembershipType.ID.Value.ToString() : "")
+                .Add("giving_number", this.GivingNumber);
 
             if (!string.IsNullOrEmpty(Email) && Email.Contains('@') && Email.Contains('.')) {
-                sb.AppendFormat("&email={0}", this.Email);
+                formValues.Add("email", this.Email);
             }
             else {
-                sb.AppendFormat("&email={0}", "");
+                formValues.Add("email", string.Empty);
             }
 
             if (this.Addresses != null && this.Addresses.Count > 0) {
                 foreach (var current in Addresses) {
                     var addressType = current.Type;
 
-                    sb.AppendFormat("&{0}_street_address={1}", current.Type, current.Line1 + "" + current.Line2);
-                    sb.AppendFormat("&{0}_city={1}", current.Type, current.City);
-                    sb.AppendFormat("&{0}_state={1}", current.Type, current.State.ToUpper());
-                    sb.AppendFormat("&{0}_zip={1}", current.Type, current.Zip);
+                    formValues.Add(string.Format("{0}_street_address", current.Type), current.Line1 + "" + current.Line2);
+                    formValues.Add(string.Format("{0}_city", current.Type), current.City);
+                    formValues.Add(string.Format("{0}_state", current.Type), current.State.ToUpper());
+                    formValues.Add(string.Format("{0}_zip", current.Type), current.Zip);
                 }
             }
 
             if (this.Phones != null && this.Phones.Count > 0) {
                 foreach (var current in this.Phones) {
-                    sb.AppendFormat("&{0}_phone={1}", current.Type, current.Value);
+                    formValues.Add(string.Format("{0}_phone", current.Type), current.Value);
                 }
             }
 
-            return sb.ToString();
+            return formValues.ToString();
         }
     }
 }

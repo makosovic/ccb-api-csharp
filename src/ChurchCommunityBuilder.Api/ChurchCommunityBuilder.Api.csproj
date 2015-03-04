@@ -86,6 +86,7 @@
     <Compile Include="Realms\BaseRealm.cs" />
     <Compile Include="Realms\PeopleRealm.cs" />
     <Compile Include="Realms\ProcessRealm.cs" />
+    <Compile Include="Util\FormValuesBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
