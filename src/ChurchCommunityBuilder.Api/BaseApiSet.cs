@@ -61,11 +61,12 @@ namespace ChurchCommunityBuilder.Api {
         public S Execute<S>(string serviceName, Dictionary<string, string> parameters) where S : new() {
             this._parameters = new Dictionary<string, string>();
             this._parameters.Add("srv", serviceName);
-            var request = CreateRestRequest(Method.GET, _baseUrl);
 
             foreach (var current in parameters) {
                 this._parameters.Add(current.Key, current.Value);
             }
+
+            var request = CreateRestRequest(Method.GET, _baseUrl);
 
             var results = ExecuteGenericRequest<S>(request);
             return results.Data;

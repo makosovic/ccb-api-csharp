@@ -7,6 +7,7 @@ using ChurchCommunityBuilder.Api.Entity;
 using System.Xml;
 using System.Xml.Serialization;
 using ChurchCommunityBuilder.Api.People.Enum;
+using System.Web;
 
 namespace ChurchCommunityBuilder.Api.People.Entity {
     [XmlRoot("individual")]
@@ -157,7 +158,7 @@ namespace ChurchCommunityBuilder.Api.People.Entity {
                 else {
                     needsAnd = true;
                 }
-                sb.AppendFormat("first_name={0}", this.FirstName);
+                sb.AppendFormat("first_name={0}", HttpUtility.UrlEncode(this.FirstName));
             }
 
             if (!string.IsNullOrEmpty(this.LastName)) {
@@ -167,7 +168,7 @@ namespace ChurchCommunityBuilder.Api.People.Entity {
                 else {
                     needsAnd = true;
                 }
-                sb.AppendFormat("last_name={0}", this.LastName);
+                sb.AppendFormat("last_name={0}", HttpUtility.UrlEncode(this.LastName));
             }
 
             if (needsAnd) {
@@ -208,16 +209,16 @@ namespace ChurchCommunityBuilder.Api.People.Entity {
             }
 
             sb.AppendFormat("&gender={0}", this.Gender);
-            sb.AppendFormat("&birthday={0}", this.Birthday.HasValue ? this.Birthday.Value.ToString("yyyy-mm-dd") : "");
-            sb.AppendFormat("&anniversary={0}", this.Anniversary.HasValue ? this.Anniversary.Value.ToString("yyyy-mm-dd") : "");
-            sb.AppendFormat("&deceased={0}", this.Deceased.HasValue ? this.Deceased.Value.ToString("yyyy-mm-dd") : "");
-            sb.AppendFormat("&membership_date={0}", this.MembershipDate.HasValue ? this.MembershipDate.Value.ToString("yyyy-mm-dd") : "");
-            sb.AppendFormat("&membership_end={0}", this.MembershipEnd.HasValue ? this.MembershipEnd.Value.ToString("yyyy-mm-dd") : "");
+            sb.AppendFormat("&birthday={0}", this.Birthday.HasValue ? this.Birthday.Value.ToString("yyyy-MM-dd") : "");
+            sb.AppendFormat("&anniversary={0}", this.Anniversary.HasValue ? this.Anniversary.Value.ToString("yyyy-MM-dd") : "");
+            sb.AppendFormat("&deceased={0}", this.Deceased.HasValue ? this.Deceased.Value.ToString("yyyy-MM-dd") : "");
+            sb.AppendFormat("&membership_date={0}", this.MembershipDate.HasValue ? this.MembershipDate.Value.ToString("yyyy-MM-dd") : "");
+            sb.AppendFormat("&membership_end={0}", this.MembershipEnd.HasValue ? this.MembershipEnd.Value.ToString("yyyy-MM-dd") : "");
             sb.AppendFormat("&membership_type_id={0}", this.MembershipType != null && this.MembershipType.ID.HasValue ? this.MembershipType.ID.Value.ToString() : "");
             sb.AppendFormat("&giving_number={0}", this.GivingNumber);
 
             if (!string.IsNullOrEmpty(Email) && Email.Contains('@') && Email.Contains('.')) {
-                sb.AppendFormat("&email={0}", this.Email);
+                sb.AppendFormat("&email={0}", this.Email.ToLower().Trim());
             }
             else {
                 sb.AppendFormat("&email={0}", "");
@@ -227,16 +228,22 @@ namespace ChurchCommunityBuilder.Api.People.Entity {
                 foreach (var current in Addresses) {
                     var addressType = current.Type;
 
-                    sb.AppendFormat("&{0}_street_address={1}", current.Type, current.Line1 + "" + current.Line2);
-                    sb.AppendFormat("&{0}_city={1}", current.Type, current.City);
-                    sb.AppendFormat("&{0}_state={1}", current.Type, current.State.ToUpper());
-                    sb.AppendFormat("&{0}_zip={1}", current.Type, current.Zip);
+                    var addressLLine = current.Line1;
+
+                    if (!current.Line2.StartsWith(current.City)) {
+                        addressLLine += " " + current.Line2;
+                    }
+
+                    sb.AppendFormat("&{0}_street_address={1}", current.Type, HttpUtility.UrlEncode(addressLLine.Trim()));
+                    sb.AppendFormat("&{0}_city={1}", current.Type, HttpUtility.UrlEncode(current.City.Trim()));
+                    sb.AppendFormat("&{0}_state={1}", current.Type, current.State.ToUpper().Trim());
+                    sb.AppendFormat("&{0}_zip={1}", current.Type, current.Zip.Trim());
                 }
             }
 
             if (this.Phones != null && this.Phones.Count > 0) {
                 foreach (var current in this.Phones) {
-                    sb.AppendFormat("&{0}_phone={1}", current.Type, current.Value);
+                    sb.AppendFormat("&{0}_phone={1}", current.Type, HttpUtility.UrlEncode(current.Value.Trim()));
                 }
             }
 
