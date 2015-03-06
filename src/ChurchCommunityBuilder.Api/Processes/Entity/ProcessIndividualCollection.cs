@@ -8,10 +8,12 @@ using System.Xml.Serialization;
 
 namespace ChurchCommunityBuilder.Api.Processes.Entity {
     [Serializable]
-    [XmlRoot("ccb_api")]
-    public class ProcessIndividualCollection {
+    public class ProcessIndividualCollection : Response {
+        public ProcessIndividualCollection() {
+            this.Individuals = new List<ProcessIndividual>();
+        }
         [XmlArrayItem("individual", typeof(ProcessIndividual))]
         [XmlArray("individuals")]
-        public List<ProcessIndividual> ProcessIndividuals { get; set; }
+        public List<ProcessIndividual> Individuals { get; set; }
     }
 }

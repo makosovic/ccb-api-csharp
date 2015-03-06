@@ -30,7 +30,7 @@ namespace ChurchCommunityBuilder.Api.Processes.Sets {
             var paramters = new Dictionary<string, string>();
             paramters.Add("id", queueID);
             var response = this.Execute<ProcessIndividualCollection>("queue_individuals", paramters);
-            return response.ProcessIndividuals;
+            return response.Individuals;
         }
     }
 }

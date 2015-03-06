@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace ChurchCommunityBuilder.Api.Processes.Entity {
+    [XmlRoot("individual")]
     public class ProcessIndividual {
         //<individual id="57">
         //    <name>Bob Ross</name>
