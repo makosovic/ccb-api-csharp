@@ -11,3 +11,16 @@ D:\dev\ccb-api-csharp\ChurchCommunityBuilder.Api.Tests\bin\Debug\RestSharp.xml
 D:\dev\ccb-api-csharp\ChurchCommunityBuilder.Api.Tests\obj\Debug\ChurchCommunityBuilder.Api.Tests.csprojResolveAssemblyReference.cache
 D:\dev\ccb-api-csharp\ChurchCommunityBuilder.Api.Tests\obj\Debug\ChurchCommunityBuilder.Api.Tests.dll
 D:\dev\ccb-api-csharp\ChurchCommunityBuilder.Api.Tests\obj\Debug\ChurchCommunityBuilder.Api.Tests.pdb
+C:\dev\ccb-api-csharp\ChurchCommunityBuilder.Api.Tests\bin\Debug\ChurchCommunityBuilder.Api.Tests.dll
+C:\dev\ccb-api-csharp\ChurchCommunityBuilder.Api.Tests\bin\Debug\ChurchCommunityBuilder.Api.Tests.pdb
+C:\dev\ccb-api-csharp\ChurchCommunityBuilder.Api.Tests\bin\Debug\ChurchCommunityBuilder.Api.dll
+C:\dev\ccb-api-csharp\ChurchCommunityBuilder.Api.Tests\bin\Debug\nunit.framework.dll
+C:\dev\ccb-api-csharp\ChurchCommunityBuilder.Api.Tests\bin\Debug\Shouldly.dll
+C:\dev\ccb-api-csharp\ChurchCommunityBuilder.Api.Tests\bin\Debug\RestSharp.dll
+C:\dev\ccb-api-csharp\ChurchCommunityBuilder.Api.Tests\bin\Debug\ChurchCommunityBuilder.Api.pdb
+C:\dev\ccb-api-csharp\ChurchCommunityBuilder.Api.Tests\bin\Debug\nunit.framework.xml
+C:\dev\ccb-api-csharp\ChurchCommunityBuilder.Api.Tests\bin\Debug\Shouldly.pdb
+C:\dev\ccb-api-csharp\ChurchCommunityBuilder.Api.Tests\bin\Debug\RestSharp.xml
+C:\dev\ccb-api-csharp\ChurchCommunityBuilder.Api.Tests\obj\Debug\ChurchCommunityBuilder.Api.Tests.csprojResolveAssemblyReference.cache
+C:\dev\ccb-api-csharp\ChurchCommunityBuilder.Api.Tests\obj\Debug\ChurchCommunityBuilder.Api.Tests.dll
+C:\dev\ccb-api-csharp\ChurchCommunityBuilder.Api.Tests\obj\Debug\ChurchCommunityBuilder.Api.Tests.pdb

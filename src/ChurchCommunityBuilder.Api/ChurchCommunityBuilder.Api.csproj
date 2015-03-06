@@ -75,6 +75,8 @@
     <Compile Include="People\Sets\Families.cs" />
     <Compile Include="People\Sets\Individuals.cs" />
     <Compile Include="People\Sets\MembershipTypes.cs" />
+    <Compile Include="Processes\Entity\ProcessIndividualCollection.cs" />
+    <Compile Include="Processes\Entity\ProcessIndividual.cs" />
     <Compile Include="Processes\Entity\Process.cs" />
     <Compile Include="Processes\Entity\ProcessCollection.cs" />
     <Compile Include="Processes\Entity\ProcessQueue.cs" />
