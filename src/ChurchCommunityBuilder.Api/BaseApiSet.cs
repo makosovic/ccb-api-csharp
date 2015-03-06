@@ -79,6 +79,7 @@ namespace ChurchCommunityBuilder.Api {
                 updateUrl += "&" + pair.Key + "=" + pair.Value;
             }
 
+            this._parameters = new Dictionary<string, string>();
             var request = CreateRestRequest(Method.POST, updateUrl);
 
             request.AddParameter("application/x-www-form-urlencoded", formValues, ParameterType.RequestBody);
@@ -88,8 +89,8 @@ namespace ChurchCommunityBuilder.Api {
 
         internal T Create(string serviceName, string formValues) {
             var createUrl = _baseUrl + "?srv=" + serviceName;
+            this._parameters = new Dictionary<string, string>();
             var request = CreateRestRequest(Method.POST, createUrl);
-
             request.AddParameter("application/x-www-form-urlencoded", formValues, ParameterType.RequestBody);
             var results = ExecuteRequest(request);
             return results.Data;
