@@ -190,11 +190,11 @@ namespace ChurchCommunityBuilder.Api.People.Entity {
             }
 
             formValues.Add("gender", this.Gender)
-                .Add("birthday", this.Birthday.HasValue ? this.Birthday.Value.ToString("yyyy-mm-dd") : "")
-                .Add("anniversary", this.Anniversary.HasValue ? this.Anniversary.Value.ToString("yyyy-mm-dd") : "")
-                .Add("deceased", this.Deceased.HasValue ? this.Deceased.Value.ToString("yyyy-mm-dd") : "")
-                .Add("membership_date", this.MembershipDate.HasValue ? this.MembershipDate.Value.ToString("yyyy-mm-dd") : "")
-                .Add("membership_end", this.MembershipEnd.HasValue ? this.MembershipEnd.Value.ToString("yyyy-mm-dd") : "")
+                .Add("birthday", this.Birthday.HasValue ? this.Birthday.Value.ToString("yyyy-MM-dd") : "")
+                .Add("anniversary", this.Anniversary.HasValue ? this.Anniversary.Value.ToString("yyyy-MM-dd") : "")
+                .Add("deceased", this.Deceased.HasValue ? this.Deceased.Value.ToString("yyyy-MM-dd") : "")
+                .Add("membership_date", this.MembershipDate.HasValue ? this.MembershipDate.Value.ToString("yyyy-MM-dd") : "")
+                .Add("membership_end", this.MembershipEnd.HasValue ? this.MembershipEnd.Value.ToString("yyyy-MM-dd") : "")
                 .Add("membership_type_id", this.MembershipType != null && this.MembershipType.ID.HasValue ? this.MembershipType.ID.Value.ToString() : "")
                 .Add("giving_number", this.GivingNumber);
 
@@ -208,8 +208,14 @@ namespace ChurchCommunityBuilder.Api.People.Entity {
             if (this.Addresses != null && this.Addresses.Count > 0) {
                 foreach (var current in Addresses) {
                     var addressType = current.Type;
+                    var addressLine = current.Line1;
 
-                    formValues.Add(string.Format("{0}_street_address", current.Type), current.Line1 + "" + current.Line2);
+                    
+                    if (!current.Line2.StartsWith(current.City)) {
+                        addressLine += " " + current.Line2;
+                    }
+
+                    formValues.Add(string.Format("{0}_street_address", current.Type), addressLine);
                     formValues.Add(string.Format("{0}_city", current.Type), current.City);
                     formValues.Add(string.Format("{0}_state", current.Type), current.State.ToUpper());
                     formValues.Add(string.Format("{0}_zip", current.Type), current.Zip);
