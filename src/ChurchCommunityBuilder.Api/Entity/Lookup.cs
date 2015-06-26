@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 namespace ChurchCommunityBuilder.Api.Entity {
     public class Lookup {
         [XmlAttribute("id")]
-        public int? ID { get; set; }
+        public int ID { get; set; }
 
         [XmlText]
         public string Value { get; set; }

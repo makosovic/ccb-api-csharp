@@ -10,6 +10,10 @@ using ChurchCommunityBuilder.Api.Entity;
 namespace ChurchCommunityBuilder.Api.People.Entity {
     [XmlRoot("address")]
     public class Address {
+        public Address() {
+            this.Country = new Lookup();
+        }
+
         [XmlAttribute("type")]
         public string Type { get; set; }
 

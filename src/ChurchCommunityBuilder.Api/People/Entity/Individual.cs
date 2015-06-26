@@ -166,11 +166,11 @@ namespace ChurchCommunityBuilder.Api.People.Entity {
                 .Add("salutation", this.Salutation)
                 .Add("suffix", this.Suffix);
 
-            if (Campus != null && Campus.ID.HasValue) {
+            if (Campus != null && Campus.ID > 0) {
                 formValues.Add("campus_id", this.Campus.ID.ToString());
             }
 
-            if (this.Family != null && this.Family.ID.HasValue) {
+            if (this.Family != null && this.Family.ID > 0) {
                 formValues.Add("family_id", this.Family.ID);
             }
 
@@ -195,7 +195,7 @@ namespace ChurchCommunityBuilder.Api.People.Entity {
                 .Add("deceased", this.Deceased.HasValue ? this.Deceased.Value.ToString("yyyy-MM-dd") : "")
                 .Add("membership_date", this.MembershipDate.HasValue ? this.MembershipDate.Value.ToString("yyyy-MM-dd") : "")
                 .Add("membership_end", this.MembershipEnd.HasValue ? this.MembershipEnd.Value.ToString("yyyy-MM-dd") : "")
-                .Add("membership_type_id", this.MembershipType != null && this.MembershipType.ID.HasValue ? this.MembershipType.ID.Value.ToString() : "")
+                .Add("membership_type_id", this.MembershipType != null && this.MembershipType.ID > 0 ? this.MembershipType.ID.ToString() : "")
                 .Add("giving_number", this.GivingNumber);
 
             if (!string.IsNullOrEmpty(Email) && Email.Contains('@') && Email.Contains('.')) {
