@@ -62,6 +62,7 @@
     <Compile Include="People\Entity\Address.cs" />
     <Compile Include="People\Entity\Campus.cs" />
     <Compile Include="People\Entity\CampusCollection.cs" />
+    <Compile Include="People\Entity\Country.cs" />
     <Compile Include="People\Entity\Family.cs" />
     <Compile Include="People\Entity\FamilyCollection.cs" />
     <Compile Include="People\Entity\FamilyMember.cs" />
