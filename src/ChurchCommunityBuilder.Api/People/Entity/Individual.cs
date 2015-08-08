@@ -219,6 +219,10 @@ namespace ChurchCommunityBuilder.Api.People.Entity {
                     formValues.Add(string.Format("{0}_city", current.Type), current.City);
                     formValues.Add(string.Format("{0}_state", current.Type), current.State.ToUpper());
                     formValues.Add(string.Format("{0}_zip", current.Type), current.Zip);
+
+                    if (current.Country != null) {
+                        formValues.Add(string.Format("{0}_country", current.Type), current.Country.Code.ToUpper());
+                    }
                 }
             }
 
