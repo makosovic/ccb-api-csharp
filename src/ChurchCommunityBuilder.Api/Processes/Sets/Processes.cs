@@ -19,10 +19,14 @@ namespace ChurchCommunityBuilder.Api.Processes.Sets {
             return this.Execute("process_list", qo);
         }
 
-        public Queue AddPersonToQueue(string individualID, string queueID) {
+        public Queue AddPersonToQueue(string individualID, string queueID, string note = null) {
             var paramters = new Dictionary<string, string>();
             paramters.Add("individual_id", individualID);
             paramters.Add("queue_id", queueID);
+
+            if (!string.IsNullOrEmpty(note)) {
+                paramters.Add("note", note);
+            }
             return this.Execute<Queue>("add_individual_to_queue", paramters);
         }
 
