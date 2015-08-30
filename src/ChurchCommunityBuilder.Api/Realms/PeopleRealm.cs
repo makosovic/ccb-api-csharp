@@ -15,6 +15,8 @@ namespace ChurchCommunityBuilder.Api.Realms {
         private ChurchCommunityBuilder.Api.People.Sets.Families _familySet;
         private ChurchCommunityBuilder.Api.People.Sets.MembershipTypes _membershipTypesSet;
         private ChurchCommunityBuilder.Api.People.Sets.Campuses _campusesSet;
+        private ChurchCommunityBuilder.Api.People.Sets.HowTheyHeardSet _howTheyHeardSet;
+        private ChurchCommunityBuilder.Api.People.Sets.Abilities _abilitySet;
 
         #region Sets
         public ChurchCommunityBuilder.Api.People.Sets.Individuals Individuals {
@@ -54,6 +56,26 @@ namespace ChurchCommunityBuilder.Api.Realms {
                 }
 
                 return _campusesSet;
+            }
+        }
+
+        public ChurchCommunityBuilder.Api.People.Sets.HowTheyHeardSet HowTheyHeard {
+            get {
+                if (_howTheyHeardSet == null) {
+                    _howTheyHeardSet = new People.Sets.HowTheyHeardSet(string.Format(API_URL, base.ChurchCode), base.UserName, base.Password);
+                }
+
+                return _howTheyHeardSet;
+            }
+        }
+
+        public ChurchCommunityBuilder.Api.People.Sets.Abilities Abilities {
+            get {
+                if (_abilitySet == null) {
+                    _abilitySet = new People.Sets.Abilities(string.Format(API_URL, base.ChurchCode), base.UserName, base.Password);
+                }
+
+                return _abilitySet;
             }
         }
         #endregion Sets

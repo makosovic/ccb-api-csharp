@@ -61,6 +61,7 @@
     <Compile Include="Integration\Campus\CampusListTests.cs" />
     <Compile Include="Integration\Errors\CredentialsTest.cs" />
     <Compile Include="Integration\Family\FamilyListTest.cs" />
+    <Compile Include="Integration\HowTheyHeard\ListTests.cs" />
     <Compile Include="Integration\Individual\IndividualSearchTests.cs" />
     <Compile Include="Integration\Individual\MembershipTypeListTests.cs" />
     <Compile Include="Integration\Individual\UpdateIndividualTest.cs" />

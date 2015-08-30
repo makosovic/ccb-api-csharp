@@ -27,7 +27,6 @@ namespace ChurchCommunityBuilder.Api.People.Entity {
         [XmlElement("zip")]
         public string Zip { get; set; }
 
-
         [XmlElement("country")]
         public Country Country { get; set; }
 
