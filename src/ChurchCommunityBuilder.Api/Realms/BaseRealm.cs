@@ -9,7 +9,7 @@ namespace ChurchCommunityBuilder.Api.Realms {
         internal const string API_URL = "https://{0}.ccbchurch.com/api.php";
 
         #region Properties
-        internal string UserName { get; set; }
+        public string UserName { get; set; }
         internal string Password { get; set; }
         internal string ChurchCode { get; set; }
         #endregion Properties

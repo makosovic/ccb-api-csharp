@@ -12,6 +12,7 @@ namespace ChurchCommunityBuilder.Api.Realms {
         }
 
         private ChurchCommunityBuilder.Api.Processes.Sets.Processes _processesSet;
+        private ChurchCommunityBuilder.Api.Processes.Sets.QueueManagers _queueManagerSets;
 
         #region Sets
         public ChurchCommunityBuilder.Api.Processes.Sets.Processes Processes {
@@ -21,6 +22,16 @@ namespace ChurchCommunityBuilder.Api.Realms {
                 }
 
                 return _processesSet;
+            }
+        }
+
+        public ChurchCommunityBuilder.Api.Processes.Sets.QueueManagers QueueManagers {
+            get {
+                if (_queueManagerSets == null) {
+                    _queueManagerSets = new Processes.Sets.QueueManagers(string.Format(API_URL, base.ChurchCode), base.UserName, base.Password);
+                }
+
+                return _queueManagerSets;
             }
         }
         #endregion Sets

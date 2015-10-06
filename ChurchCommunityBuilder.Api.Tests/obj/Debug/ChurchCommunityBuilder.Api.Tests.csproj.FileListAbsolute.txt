@@ -24,3 +24,4 @@ C:\dev\ccb-api-csharp\ChurchCommunityBuilder.Api.Tests\bin\Debug\RestSharp.xml
 C:\dev\ccb-api-csharp\ChurchCommunityBuilder.Api.Tests\obj\Debug\ChurchCommunityBuilder.Api.Tests.csprojResolveAssemblyReference.cache
 C:\dev\ccb-api-csharp\ChurchCommunityBuilder.Api.Tests\obj\Debug\ChurchCommunityBuilder.Api.Tests.dll
 C:\dev\ccb-api-csharp\ChurchCommunityBuilder.Api.Tests\obj\Debug\ChurchCommunityBuilder.Api.Tests.pdb
+C:\dev\ccb-api-csharp\ChurchCommunityBuilder.Api.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
