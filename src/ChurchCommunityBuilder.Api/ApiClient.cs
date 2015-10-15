@@ -11,15 +11,18 @@ namespace ChurchCommunityBuilder.Api {
         #region Declarations
         private PeopleRealm _peopleRealm;
         private ProcessRealm _processRealm;
+        private FinancialRealm _financialRealm;
         #endregion Declarations
 
         public ApiClient(string churchCode, string username, string password) {
             this._peopleRealm = new PeopleRealm(churchCode, username, password);
             this._processRealm = new ProcessRealm(churchCode, username, password);
+            this._financialRealm = new FinancialRealm(churchCode, username, password);
         }
 
         public PeopleRealm People { get { return _peopleRealm; } }
         public ProcessRealm Processes { get { return _processRealm; } }
+        public FinancialRealm Financials { get { return _financialRealm; } }
     }
 
     public enum ContentType {

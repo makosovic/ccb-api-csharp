@@ -11,13 +11,7 @@ using ChurchCommunityBuilder.Api.Processes.QueryObject;
 
 namespace ChurchCommunityBuilder.Api.Tests.Integration.Process {
     [TestFixture]
-    public class MembershipTypesListTests {
-        private ApiClient _apiClient;
-        [TestFixtureSetUp]
-        public void Setup() {
-            _apiClient = new ApiClient("multisite", "chadmeyer", "Psalms46:10");
-        }
-
+    public class MembershipTypesListTests : BaseTest { 
         [Test]
         public void integration_processes_list_no_parameters() {
             var results = _apiClient.Processes.Processes.List();

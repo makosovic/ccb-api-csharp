@@ -11,13 +11,7 @@ using ChurchCommunityBuilder.Api.Processes.QueryObject;
 
 namespace ChurchCommunityBuilder.Api.Tests.Integration.Process {
     [TestFixture]
-    public class QueueManagerSearchTests {
-        private ApiClient _apiClient;
-        [TestFixtureSetUp]
-        public void Setup() {
-            _apiClient = new ApiClient("multisite", "chadmeyer", "Psalms46:10");
-        }
-        
+    public class QueueManagerSearchTests : BaseTest {
         [Test]
         public void integration_queue_managers_search_qo() {
             var results = _apiClient.Processes.QueueManagers.List(new QueueManagerQO { QueueID = 1861 });

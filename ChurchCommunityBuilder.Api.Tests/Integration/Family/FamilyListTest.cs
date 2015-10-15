@@ -11,13 +11,7 @@ using ChurchCommunityBuilder.Api.People.QueryObject;
 
 namespace ChurchCommunityBuilder.Api.Tests.Integration.Family {
     [TestFixture]
-    public class FamilyListTest {
-        private ApiClient _apiClient;
-        [TestFixtureSetUp]
-        public void Setup() {
-            _apiClient = new ApiClient("multisite", "chadmeyer", "Psalms46:10");
-        }
-
+    public class FamilyListTest : BaseTest {
         [Test]
         public void integration_family_get_family_get() {
             var qo = new IndividualQO();

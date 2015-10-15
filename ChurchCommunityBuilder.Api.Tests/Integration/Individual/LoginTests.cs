@@ -9,13 +9,13 @@ using ChurchCommunityBuilder.Api;
 using ChurchCommunityBuilder.Api.People.Entity;
 using ChurchCommunityBuilder.Api.People.QueryObject;
 
-namespace ChurchCommunityBuilder.Api.Tests.Integration.Family {
+namespace ChurchCommunityBuilder.Api.Tests.Integration.Individual {
     [TestFixture]
-    public class CampusListTests : BaseTest {
+    public class LoginTests : BaseTest {
         [Test]
-        public void integration_family_get_campus_list() {
-            var campuses = _apiClient.People.Campuses.List();
-            campuses.Campuses.Count.ShouldBeGreaterThan(0);
+        public void integration_indivdiual_login_with_success() {
+            var result = _apiClient.People.Individuals.Login("52projects", "Psalms46:10");
+            result.ShouldBeGreaterThan(0);
         }
     }
 }

@@ -9,13 +9,13 @@ using ChurchCommunityBuilder.Api;
 using ChurchCommunityBuilder.Api.People.Entity;
 using ChurchCommunityBuilder.Api.People.QueryObject;
 
-namespace ChurchCommunityBuilder.Api.Tests.Integration.Family {
+namespace ChurchCommunityBuilder.Api.Tests.Integration {
     [TestFixture]
-    public class CampusListTests : BaseTest {
-        [Test]
-        public void integration_family_get_campus_list() {
-            var campuses = _apiClient.People.Campuses.List();
-            campuses.Campuses.Count.ShouldBeGreaterThan(0);
+    public class BaseTest {
+        public ApiClient _apiClient;
+        [TestFixtureSetUp]
+        public virtual void Setup() {
+            _apiClient = new ApiClient("multisite", "chadmeyer", "Psalms46:10");
         }
     }
 }

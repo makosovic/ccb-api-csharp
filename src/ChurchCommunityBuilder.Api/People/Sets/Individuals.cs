@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ChurchCommunityBuilder.Api;
 using ChurchCommunityBuilder.Api.People.Entity;
 using ChurchCommunityBuilder.Api.People.QueryObject;
+using ChurchCommunityBuilder.Api.Entity;
 
 namespace ChurchCommunityBuilder.Api.People.Sets {
     public class Individuals : BaseApiSet<IndividualCollection> {
@@ -51,6 +52,21 @@ namespace ChurchCommunityBuilder.Api.People.Sets {
             }
 
             return null;
+        }
+
+        public int Login(string username, string password) {
+            int returnID = 0;
+            var parameters = new Dictionary<string, string>();
+            parameters.Add("login", username);
+            parameters.Add("password", password);
+
+            var result = this.Execute<Response>("individual_id_from_login_password", parameters);
+
+            if (result.Items.Count > 0) {
+                returnID = result.Items[0].ID.Value;
+            }
+
+            return returnID;
         }
     }
 }

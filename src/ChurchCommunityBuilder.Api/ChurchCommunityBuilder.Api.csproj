@@ -59,6 +59,7 @@
     <Compile Include="Attributes\QOAttribute.cs" />
     <Compile Include="BaseApiSet.cs" />
     <Compile Include="Entity\BaseEntity.cs" />
+    <Compile Include="Entity\Error.cs" />
     <Compile Include="Entity\Lookup.cs" />
     <Compile Include="Entity\LookupType.cs" />
     <Compile Include="Entity\LookupTypeCollection.cs" />
@@ -67,6 +68,11 @@
     <Compile Include="Exceptions\GenericException.cs" />
     <Compile Include="Exceptions\PropertyNotAllowedException.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
+    <Compile Include="Financial\Entity\Account.cs" />
+    <Compile Include="Financial\Entity\AccountCollection.cs" />
+    <Compile Include="Financial\Entity\OnlineGift.cs" />
+    <Compile Include="Financial\Sets\Accounts.cs" />
+    <Compile Include="Financial\Sets\OnlineGifts.cs" />
     <Compile Include="People\Entity\Ability.cs" />
     <Compile Include="People\Entity\Address.cs" />
     <Compile Include="People\Entity\Campus.cs" />
@@ -105,6 +111,7 @@
     <Compile Include="QueryObject.cs" />
     <Compile Include="Entity\Response.cs" />
     <Compile Include="Realms\BaseRealm.cs" />
+    <Compile Include="Realms\FinancialRealm.cs" />
     <Compile Include="Realms\PeopleRealm.cs" />
     <Compile Include="Realms\ProcessRealm.cs" />
     <Compile Include="Util\FormValuesBuilder.cs" />
@@ -113,6 +120,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

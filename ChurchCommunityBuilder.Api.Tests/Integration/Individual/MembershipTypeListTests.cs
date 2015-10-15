@@ -11,13 +11,7 @@ using ChurchCommunityBuilder.Api.People.QueryObject;
 
 namespace ChurchCommunityBuilder.Api.Tests.Integration {
     [TestFixture]
-    public class MembershipTypesListTests {
-        private ApiClient _apiClient;
-        [TestFixtureSetUp]
-        public void Setup() {
-            _apiClient = new ApiClient("multisite", "chadmeyer", "Psalms46:10");
-        }
-
+    public class MembershipTypesListTests : BaseTest { 
         [Test]
         public void integration_membership_types_list() {
             var results = _apiClient.People.MembershipTypes.List();
