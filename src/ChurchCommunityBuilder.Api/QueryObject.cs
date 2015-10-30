@@ -7,6 +7,15 @@ using ChurchCommunityBuilder.Api.Attributes;
 
 namespace ChurchCommunityBuilder.Api {
     public abstract class QueryObject {
+        #region Properties
+        [QO("page")]
+        public int? PageNumber { get; set; }
+
+        [QO("per_page")]
+        public int? RecordsPerPage { get; set; }
+        #endregion Properties
+
+
         internal string ToQueryString() { //non-encoded query string
             StringBuilder sb = new StringBuilder();
 

@@ -65,6 +65,13 @@
     <Compile Include="Entity\LookupTypeCollection.cs" />
     <Compile Include="Entity\Parameter.cs" />
     <Compile Include="Entity\Request.cs" />
+    <Compile Include="Events\Entity\Location.cs" />
+    <Compile Include="Events\Entity\ProfileCollection.cs" />
+    <Compile Include="Events\Entity\Event.cs" />
+    <Compile Include="Events\Entity\Registration.cs" />
+    <Compile Include="Events\Entity\Setup.cs" />
+    <Compile Include="Events\QueryObject\ProfileQO.cs" />
+    <Compile Include="Events\Sets\Profiles.cs" />
     <Compile Include="Exceptions\GenericException.cs" />
     <Compile Include="Exceptions\PropertyNotAllowedException.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
@@ -111,6 +118,7 @@
     <Compile Include="QueryObject.cs" />
     <Compile Include="Entity\Response.cs" />
     <Compile Include="Realms\BaseRealm.cs" />
+    <Compile Include="Realms\EventsRealm.cs" />
     <Compile Include="Realms\FinancialRealm.cs" />
     <Compile Include="Realms\PeopleRealm.cs" />
     <Compile Include="Realms\ProcessRealm.cs" />

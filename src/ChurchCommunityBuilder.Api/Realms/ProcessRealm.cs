@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ChurchCommunityBuilder.Api.Realms {
-    public class ProcessRealm: BaseRealm {
+    public class ProcessRealm : BaseRealm {
         public ProcessRealm(string churchCode, string username, string password)
             : base(churchCode, username, password) {
 
