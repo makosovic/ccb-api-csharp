@@ -13,5 +13,11 @@ namespace ChurchCommunityBuilder.Api.Groups.Sets {
         public GroupCollection List(GroupProfileQO qo) {
             return this.Execute("group_profiles", qo);
         }
+
+        public Group Get(int id) {
+            var parameters = new Dictionary<string, string>();
+            parameters.Add("id", id.ToString());
+            return this.Execute<Group>("group_profile_from_id", parameters);
+        }
     }
 }
