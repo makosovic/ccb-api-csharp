@@ -11,6 +11,9 @@ namespace ChurchCommunityBuilder.Api.Events.Entity {
     [Serializable]
     [XmlRoot("event")]
     public class Event {
+        [XmlAttribute("id")]
+        public int ID { get; set; }
+
         [XmlElement("name")]
         public string Name { get; set; }
 

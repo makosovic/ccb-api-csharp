@@ -18,16 +18,16 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration.Family {
             qo.FirstName = "chad";
             qo.LastName = "meyer";
 
-            var results = _apiClient.People.Individuals.Search(qo);
+            var results = base.ApiClient.People.Individuals.Search(qo);
 
-            var family = _apiClient.People.Families.Get(results.Individuals[0].Family.ID.Value);
+            var family = base.ApiClient.People.Families.Get(results.Individuals[0].Family.ID.Value);
 
             family.ShouldNotBe(null);
         }
 
         [Test]
         public void integration_family_get_family_list() {
-            var families = _apiClient.People.Families.List(DateTime.UtcNow.AddMonths(-3));
+            var families = base.ApiClient.People.Families.List(DateTime.UtcNow.AddMonths(-3));
             families.Families.Count.ShouldBeGreaterThan(0);
         }
     }

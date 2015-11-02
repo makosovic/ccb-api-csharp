@@ -14,7 +14,7 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration.Process {
     public class QueueManagerSearchTests : BaseTest {
         [Test]
         public void integration_queue_managers_search_qo() {
-            var results = _apiClient.Processes.QueueManagers.List(new QueueManagerQO { QueueID = 1861 });
+            var results = base.ApiClient.Processes.QueueManagers.List(new QueueManagerQO { QueueID = 1861 });
             results.Managers.Count.ShouldBeGreaterThan(0);
         }
     }

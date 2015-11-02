@@ -9,10 +9,10 @@ namespace ChurchCommunityBuilder.Api {
     public abstract class QueryObject {
         #region Properties
         [QO("page")]
-        public int? PageNumber { get; set; }
+        public int? PageNumber { get; set; } = 1;
 
         [QO("per_page")]
-        public int? RecordsPerPage { get; set; }
+        public int? RecordsPerPage { get; set; } = 20;
         #endregion Properties
 
 

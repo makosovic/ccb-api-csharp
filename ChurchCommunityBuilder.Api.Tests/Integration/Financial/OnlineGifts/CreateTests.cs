@@ -23,7 +23,7 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration.Financial.OnlineGifts {
             onlineGift.GiftAmount = rnd.Next(3, 176);
             onlineGift.MerchantAuthorizationCode = "2346356";
 
-            var returnGift = _apiClient.Financials.OnlineGifts.Create(onlineGift);
+            var returnGift = base.ApiClient.Financials.OnlineGifts.Create(onlineGift);
             returnGift.ShouldBe(true);
         }
     }

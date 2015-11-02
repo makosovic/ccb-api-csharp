@@ -12,10 +12,10 @@ using ChurchCommunityBuilder.Api.People.QueryObject;
 namespace ChurchCommunityBuilder.Api.Tests.Integration {
     [TestFixture]
     public class BaseTest {
-        public ApiClient _apiClient;
+        public ApiClient ApiClient;
         [TestFixtureSetUp]
         public virtual void Setup() {
-            _apiClient = new ApiClient("multisite", "chadmeyer", "Psalms46:10");
+            ApiClient = new ApiClient("multisite", "chadmeyer", "Psalms46:10");
         }
     }
 }

@@ -14,7 +14,7 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration.Financial.Accounts {
     public class ListTests : BaseTest {
         [Test]
         public void integration_financial_transaction_groups_list() {
-            var results = _apiClient.Financials.Accounts.List();
+            var results = base.ApiClient.Financials.Accounts.List();
             results.TransactionDetailTypes.Count.ShouldBeGreaterThan(0);
         }
     }

@@ -18,8 +18,8 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration.Individual {
             qo.FirstName = "chad";
             qo.LastName = "meyer";
 
-            var results = _apiClient.People.Individuals.Search(qo);
-            var updatedIndividual = _apiClient.People.Individuals.Update(results.Individuals[0]);
+            var results = base.ApiClient.People.Individuals.Search(qo);
+            var updatedIndividual = base.ApiClient.People.Individuals.Update(results.Individuals[0]);
 
             updatedIndividual.ShouldNotBe(null);
         }
@@ -30,10 +30,10 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration.Individual {
             qo.FirstName = "chad";
             qo.LastName = "meyer";
 
-            var results = _apiClient.People.Individuals.Search(qo);
+            var results = base.ApiClient.People.Individuals.Search(qo);
             var indiviudal = results.Individuals[0];
             indiviudal.Email = "churchdatabase.com";
-            var updatedIndividual = _apiClient.People.Individuals.Update(indiviudal);
+            var updatedIndividual = base.ApiClient.People.Individuals.Update(indiviudal);
 
             updatedIndividual.Email.ShouldNotStartWith("churchdatabase.com");
         }

@@ -14,7 +14,7 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration {
     public class MembershipTypesListTests : BaseTest { 
         [Test]
         public void integration_membership_types_list() {
-            var results = _apiClient.People.MembershipTypes.List();
+            var results = base.ApiClient.People.MembershipTypes.List();
             results.Items.Count.ShouldBeGreaterThan(0);
         }
     }

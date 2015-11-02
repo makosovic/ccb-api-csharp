@@ -14,7 +14,7 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration.HowTheyHeard {
     public class ListTests : BaseTest {
         [Test]
         public void integration_how_they_heard_list() {
-            var results = _apiClient.People.HowTheyHeard.List();
+            var results = base.ApiClient.People.HowTheyHeard.List();
             results.Items.Count.ShouldBeGreaterThan(0);
         }
     }

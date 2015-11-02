@@ -14,7 +14,7 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration.Family {
     public class CampusListTests : BaseTest {
         [Test]
         public void integration_family_get_campus_list() {
-            var campuses = _apiClient.People.Campuses.List();
+            var campuses = base.ApiClient.People.Campuses.List();
             campuses.Campuses.Count.ShouldBeGreaterThan(0);
         }
     }
