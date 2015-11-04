@@ -11,6 +11,16 @@ namespace ChurchCommunityBuilder.Api.Entity {
         [XmlAttribute("id")]
         public int? ID { get; set; }
 
+        [XmlAttribute("ccb_id")]
+        public int? CCBID {
+            get {
+                return this.ID;
+            }
+            set {
+                this.ID = value;
+            }
+        }
+
         [XmlText]
         public string Value { get; set; }
     }

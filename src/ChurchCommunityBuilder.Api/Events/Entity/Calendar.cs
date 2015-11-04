@@ -12,7 +12,7 @@ namespace ChurchCommunityBuilder.Api.Events.Entity {
     [XmlRoot("item")]
     public class Calendar {
         [XmlElement("date")]
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
 
         [XmlElement("event_name")]
         public Lookup EventName { get; set; }
@@ -21,19 +21,19 @@ namespace ChurchCommunityBuilder.Api.Events.Entity {
         public string EventDescription { get; set; }
 
         [XmlElement("start_time")]
-        public DateTime? StartTime { get; set; }
+        public string StartTime { get; set; }
 
         [XmlElement("end_time")]
-        public DateTime? EndTime { get; set; }
+        public string EndTime { get; set; }
 
         [XmlElement("event_duration")]
-        public int EventDuration { get; set; }
+        public decimal? EventDuration { get; set; }
 
         [XmlElement("event_type")]
         public string EventType { get; set; }
 
         [XmlElement("location")]
-        public Location Location { get; set; }
+        public string Location { get; set; }
 
         [XmlElement("group_name")]
         public Lookup GroupName { get; set; }

@@ -9,8 +9,8 @@ using System.Xml.Serialization;
 namespace ChurchCommunityBuilder.Api.Events.Entity {
     [Serializable]
     public class CalendarCollection : Response {
-        [XmlArrayItem("items", typeof(Lookup))]
+        [XmlArrayItem("items", typeof(Calendar))]
         [XmlArray("item")]
-        public List<Lookup> Items { get; set; }
+        public List<Calendar> Items { get; set; }
     }
 }
