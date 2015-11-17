@@ -8,16 +8,26 @@ using System.Xml.Serialization;
 
 namespace ChurchCommunityBuilder.Api.Entity {
     public class Lookup {
+        private int? _id;
         [XmlAttribute("id")]
-        public int? ID { get; set; }
+        public int? ID {
+            get {
+                return _id;
+            }
+            set {
+                _id = value;
+            }
+        }
 
         [XmlAttribute("ccb_id")]
         public int? CCBID {
             get {
-                return this.ID;
+                return _id;
             }
             set {
-                this.ID = value;
+                if (!_id.HasValue) {
+                    _id = value;
+                }
             }
         }
 
