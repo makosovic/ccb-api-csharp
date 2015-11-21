@@ -5,28 +5,37 @@ using System.Text;
 using System.Threading.Tasks;
 using ChurchCommunityBuilder.Api.Util;
 using System.Globalization;
+using System.Xml.Serialization;
 
 namespace ChurchCommunityBuilder.Api.Financial.Entity {
     [Serializable]
-    public class OnlineGift {
+    public class OnlineGift {     
+        [XmlElement("gift_id")]
+        public int GiftID { get; set; }        
         public int AccountID { get; set; }
         public int? IndividualID { get; set; }
+        [XmlElement("amount")]
         public decimal GiftAmount { get; set; }
 
         public string MerchantTransactionID { get; set; }
         public string MerchantAuthorizationCode { get; set; }
         public string MerchantNotes { get; set; }
-        public DateTime? MerchantProcessDate { get; set; }
+        public DateTime? MerchantProcessDate { get; set; }        
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        [XmlElement("address")]
         public string StreetAddress { get; set; }
         public string City { get; set; }
         public string State { get; set; }
+        [XmlElement("postal_code")]
         public string Zip { get; set; }
         public string Email { get; set; }
+        [XmlElement("phone_number")]
         public string Phone { get; set; }
         public int? CampusID { get; set; }
         public string PaymentMethodType { get; set; }
+        [XmlElement("confirmation_code")]
+        public string ConfirmationCode { get; set; }
 
         public string GetFormValues() {
             var formValues = CreateFormValues();
