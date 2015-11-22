@@ -10,6 +10,9 @@ namespace ChurchCommunityBuilder.Api.Financial.Entity {
     [Serializable]
     [XmlRoot("transaction_detail_type")]
     public class Account {
+        [XmlAttribute("id")]
+        public int ID { get; set; }
+
         [XmlElement("name")]
         public string Name { get; set; }
 
