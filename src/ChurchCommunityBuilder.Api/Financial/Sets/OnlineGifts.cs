@@ -10,9 +10,9 @@ namespace ChurchCommunityBuilder.Api.Financial.Sets {
     public class OnlineGifts : BaseApiSet<OnlineGift> {
         public OnlineGifts(string baseUrl, string username, string password) : base(baseUrl, username, password) { }
 
-        public bool Create(OnlineGift entity) {
-            var result = this.Execute<Response>("online_giving_insert_gift", entity.GetFormDictionary());
-            return result.Errors.Count == 0;
+        public OnlineGift Create(OnlineGift entity) {
+            var result = this.Execute<OnlineGift>("online_giving_insert_gift", entity.GetFormDictionary());
+            return result;
         }
     }
 }
