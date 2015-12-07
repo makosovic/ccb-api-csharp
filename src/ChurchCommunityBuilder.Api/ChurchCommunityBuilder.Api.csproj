@@ -61,10 +61,14 @@
     <Compile Include="Entity\LookupTypeCollection.cs" />
     <Compile Include="Entity\Parameter.cs" />
     <Compile Include="Entity\Request.cs" />
+    <Compile Include="Events\Entity\Attendee.cs" />
     <Compile Include="Events\Entity\Calendar.cs" />
     <Compile Include="Events\Entity\CalendarCollection.cs" />
+    <Compile Include="Events\Entity\EventAttendance.cs" />
+    <Compile Include="Events\Entity\EventAttendanceCollection.cs" />
     <Compile Include="Events\Entity\Exception.cs" />
     <Compile Include="Events\Entity\Guest.cs" />
+    <Compile Include="Events\Entity\IndividualEvent.cs" />
     <Compile Include="Events\Entity\Location.cs" />
     <Compile Include="Events\Entity\EventCollection.cs" />
     <Compile Include="Events\Entity\Event.cs" />
@@ -72,8 +76,10 @@
     <Compile Include="Events\Entity\RegistrationForm.cs" />
     <Compile Include="Events\Entity\Setup.cs" />
     <Compile Include="Events\QueryObject\CalendarQO.cs" />
+    <Compile Include="Events\QueryObject\EventQO.cs" />
     <Compile Include="Events\QueryObject\ProfileQO.cs" />
     <Compile Include="Events\Sets\Calendar.cs" />
+    <Compile Include="Events\Sets\Events.cs" />
     <Compile Include="Events\Sets\Profiles.cs" />
     <Compile Include="Exceptions\GenericException.cs" />
     <Compile Include="Exceptions\PropertyNotAllowedException.cs" />

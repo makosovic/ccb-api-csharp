@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using RestSharp;
 using RestSharp.Authenticators;
 
 namespace ChurchCommunityBuilder.Api {
     public class BaseApiSet<T> where T : new() {
         private readonly string _baseUrl;
-        private string _username;
-        private string _password;
+        private readonly string _username;
+        private readonly string _password;
         private readonly ContentType _contentType;
         private IDictionary<string, string> _parameters;
 
         public string BaseUrl { get { return _baseUrl; } }
-            
+
         public BaseApiSet(string baseUrl, string username, string password) {
             _baseUrl = baseUrl;
             _username = username;
@@ -87,15 +85,20 @@ namespace ChurchCommunityBuilder.Api {
             return results.Data;
         }
 
-        internal T Create(string serviceName, string formValues) {
+        internal T Create(string serviceName, string formValues, string file = null) {
             var createUrl = _baseUrl + "?srv=" + serviceName;
             this._parameters = new Dictionary<string, string>();
             var request = CreateRestRequest(Method.POST, createUrl);
+
+            if (!string.IsNullOrEmpty(file)) {
+                var bytes = Encoding.ASCII.GetBytes(file);
+                request.AddFile("file", bytes, "file", "text/xml");
+            }
+
             request.AddParameter("application/x-www-form-urlencoded", formValues, ParameterType.RequestBody);
             var results = ExecuteRequest(request);
             return results.Data;
         }
-
         protected IRestResponse<T> ExecuteRequest(IRestRequest request) {
             var client = new RestClient(_baseUrl);
             client.Authenticator = new HttpBasicAuthenticator(this._username, this._password);
