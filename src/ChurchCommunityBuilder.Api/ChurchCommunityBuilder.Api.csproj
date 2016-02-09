@@ -31,8 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\..\52projects-library\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\52projects-library\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
@@ -54,7 +54,11 @@
     <Compile Include="Attributes\QOAttribute.cs" />
     <Compile Include="BaseApiSet.cs" />
     <Compile Include="Entity\BaseEntity.cs" />
+    <Compile Include="Financial\Entity\Import\Batch.cs" />
     <Compile Include="Entity\Error.cs" />
+    <Compile Include="Financial\Entity\Import\Lookup.cs" />
+    <Compile Include="Financial\Entity\Import\Transaction.cs" />
+    <Compile Include="Financial\Entity\Import\TransactionDetail.cs" />
     <Compile Include="Entity\Lookup.cs" />
     <Compile Include="Entity\LookupType.cs" />
     <Compile Include="Entity\LookupTypeCollection.cs" />
@@ -81,6 +85,7 @@
     <Compile Include="Financial\Entity\AccountCollection.cs" />
     <Compile Include="Financial\Entity\OnlineGift.cs" />
     <Compile Include="Financial\Sets\Accounts.cs" />
+    <Compile Include="Financial\Sets\Batches.cs" />
     <Compile Include="Financial\Sets\OnlineGifts.cs" />
     <Compile Include="Groups\Entity\Group.cs" />
     <Compile Include="Groups\Entity\GroupCollection.cs" />

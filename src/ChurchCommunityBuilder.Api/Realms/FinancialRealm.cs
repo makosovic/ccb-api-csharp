@@ -13,6 +13,7 @@ namespace ChurchCommunityBuilder.Api.Realms {
         #region Properties
         private ChurchCommunityBuilder.Api.Financial.Sets.Accounts _accountSet;
         private ChurchCommunityBuilder.Api.Financial.Sets.OnlineGifts _onlineGiftSet;
+        private ChurchCommunityBuilder.Api.Financial.Sets.Batches _batchesSet;
         #endregion Properties
 
         #region Sets
@@ -33,6 +34,16 @@ namespace ChurchCommunityBuilder.Api.Realms {
                 }
 
                 return _onlineGiftSet;
+            }
+        }
+
+        public ChurchCommunityBuilder.Api.Financial.Sets.Batches Batches {
+            get {
+                if (_batchesSet == null) {
+                    _batchesSet = new Financial.Sets.Batches(string.Format(API_URL, base.ChurchCode), base.UserName, base.Password);
+                }
+
+                return _batchesSet;
             }
         }
         #endregion Sets

@@ -96,6 +96,15 @@ namespace ChurchCommunityBuilder.Api {
             return results.Data;
         }
 
+        internal T CreateWithXml(string serviceName, string xml) {
+            var createUrl = _baseUrl + "?srv=" + serviceName;   
+            this._parameters = new Dictionary<string, string>();
+            var request = CreateRestRequest(Method.POST, createUrl, "application/xml");
+            request.AddParameter("application/xml", xml, ParameterType.RequestBody);
+            var results = ExecuteRequest(request);
+            return results.Data;
+        }
+
         protected IRestResponse<T> ExecuteRequest(IRestRequest request) {
             var client = new RestClient(_baseUrl);
             client.Authenticator = new HttpBasicAuthenticator(this._username, this._password);
