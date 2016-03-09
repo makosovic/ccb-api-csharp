@@ -13,6 +13,7 @@ namespace ChurchCommunityBuilder.Api.Realms {
 
         private ChurchCommunityBuilder.Api.Events.Sets.Profiles _profilesSets;
         private ChurchCommunityBuilder.Api.Events.Sets.Calendar _calendarSets;
+        private ChurchCommunityBuilder.Api.Events.Sets.Forms _formsSets;
 
         #region Sets
         public ChurchCommunityBuilder.Api.Events.Sets.Profiles Profiles {
@@ -32,6 +33,16 @@ namespace ChurchCommunityBuilder.Api.Realms {
                 }
 
                 return _calendarSets;
+            }
+        }
+
+        public ChurchCommunityBuilder.Api.Events.Sets.Forms Forms {
+            get {
+                if (_formsSets == null) {
+                    _formsSets = new ChurchCommunityBuilder.Api.Events.Sets.Forms(string.Format(API_URL, base.ChurchCode), base.UserName, base.Password);
+                }
+
+                return _formsSets;
             }
         }
         #endregion Sets
