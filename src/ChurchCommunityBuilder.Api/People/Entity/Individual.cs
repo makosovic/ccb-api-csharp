@@ -210,8 +210,7 @@ namespace ChurchCommunityBuilder.Api.People.Entity {
                     var addressType = current.Type;
                     var addressLine = current.Line1;
 
-                    
-                    if (!current.Line2.StartsWith(current.City)) {
+                    if (!string.IsNullOrEmpty(current.Line2) && !current.Line2.StartsWith(current.City)) {
                         addressLine += " " + current.Line2;
                     }
 
