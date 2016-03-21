@@ -62,6 +62,8 @@
     <Compile Include="Integration\Errors\CredentialsTest.cs" />
     <Compile Include="Integration\Events\CalendarTests.cs" />
     <Compile Include="Integration\Events\EventListTests.cs" />
+    <Compile Include="Integration\Events\EventTests.cs" />
+    <Compile Include="Integration\Events\FormTests.cs" />
     <Compile Include="Integration\Family\FamilyListTest.cs" />
     <Compile Include="Integration\Financial\Accounts\ListTests.cs" />
     <Compile Include="Integration\Financial\Import\CreateTests.cs" />

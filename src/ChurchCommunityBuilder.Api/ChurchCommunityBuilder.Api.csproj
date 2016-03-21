@@ -54,6 +54,9 @@
     <Compile Include="Attributes\QOAttribute.cs" />
     <Compile Include="BaseApiSet.cs" />
     <Compile Include="Entity\BaseEntity.cs" />
+    <Compile Include="Events\Entity\Form.cs" />
+    <Compile Include="Events\Entity\FormCollection.cs" />
+    <Compile Include="Events\Sets\Forms.cs" />
     <Compile Include="Financial\Entity\Import\Batch.cs" />
     <Compile Include="Entity\Error.cs" />
     <Compile Include="Financial\Entity\Import\Lookup.cs" />
