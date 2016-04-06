@@ -12,12 +12,6 @@ using ChurchCommunityBuilder.Api.People.QueryObject;
 namespace ChurchCommunityBuilder.Api.Tests.Integration.Events {
     [TestFixture]
     public class FormTests : BaseTest {
-        [Test]
-        public void integration_forms_get_form() {
-            var profile = base.ApiClient.Events.Profiles.Get(1627);
 
-            var registration = profile.Registration.Forms[0];
-            var form = base.ApiClient.Events
-        }
     }
 }

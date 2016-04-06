@@ -117,6 +117,9 @@ namespace ChurchCommunityBuilder.Api.People.Entity {
         [XmlElement("email")]
         public string Email { get; set; }
 
+        [XmlElement("allergies")]
+        public string Allergies { get; set; }
+
         [XmlElement("addresses")]
         public List<Address> Addresses { get; set; }
 
@@ -196,7 +199,8 @@ namespace ChurchCommunityBuilder.Api.People.Entity {
                 .Add("membership_date", this.MembershipDate.HasValue ? this.MembershipDate.Value.ToString("yyyy-MM-dd") : "")
                 .Add("membership_end", this.MembershipEnd.HasValue ? this.MembershipEnd.Value.ToString("yyyy-MM-dd") : "")
                 .Add("membership_type_id", this.MembershipType != null && this.MembershipType.ID > 0 ? this.MembershipType.ID.ToString() : "")
-                .Add("giving_number", this.GivingNumber);
+                .Add("giving_number", this.GivingNumber)
+                .Add("allergies", this.Allergies);
 
             if (!string.IsNullOrEmpty(Email) && Email.Contains('@') && Email.Contains('.')) {
                 formValues.Add("email", this.Email);
