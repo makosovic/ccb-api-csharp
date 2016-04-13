@@ -93,10 +93,88 @@ namespace ChurchCommunityBuilder.Api.Groups.Entity {
         [XmlElement("modifier")]
         public Lookup Modifier { get; set; }
 
-        [XmlElement("created")]
-        public DateTime Created { get; set; }
+        [XmlIgnore]
+        public DateTime? CreatedDate {
+            get {
+                DateTime createdDate = DateTime.MinValue;
 
+                if (DateTime.TryParse(_createdDateString, out createdDate)) {
+                    return createdDate;
+                }
+
+                return null;
+            }
+            set {
+                if (value.HasValue) {
+                    _createdDateString = value.Value.ToString();
+                }
+                else {
+                    _createdDateString = string.Empty;
+                }
+            }
+        }
+
+        private string _createdDateString = string.Empty;
+        [XmlElement("created")]
+        public string Created {
+            get {
+                if (!string.IsNullOrEmpty(_createdDateString)) {
+                    DateTime dt = DateTime.Now;
+
+                    if (DateTime.TryParse(_createdDateString, out dt)) {
+                        _createdDateString = dt.ToString("s");
+                    }
+                }
+
+                return _createdDateString;
+            }
+            set {
+                if (value != null) {
+                    _createdDateString = value;
+                }
+            }
+        }
+
+        [XmlIgnore]
+        public DateTime? ModifiedDate {
+            get {
+                DateTime lastUpdatedDate = DateTime.MinValue;
+
+                if (DateTime.TryParse(_lastUpdatedDateString, out lastUpdatedDate)) {
+                    return lastUpdatedDate;
+                }
+
+                return null;
+            }
+            set {
+                if (value.HasValue) {
+                    _lastUpdatedDateString = value.Value.ToString();
+                }
+                else {
+                    _lastUpdatedDateString = string.Empty;
+                }
+            }
+        }
+
+        private string _lastUpdatedDateString = string.Empty;
         [XmlElement("modified")]
-        public DateTime Modified { get; set; }
+        public string Modified {
+            get {
+                if (!string.IsNullOrEmpty(_lastUpdatedDateString)) {
+                    DateTime dt = DateTime.Now;
+
+                    if (DateTime.TryParse(_lastUpdatedDateString, out dt)) {
+                        _lastUpdatedDateString = dt.ToString("s");
+                    }
+                }
+
+                return _lastUpdatedDateString;
+            }
+            set {
+                if (value != null) {
+                    _lastUpdatedDateString = value;
+                }
+            }
+        }
     }
 }

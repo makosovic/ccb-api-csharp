@@ -19,5 +19,14 @@ namespace ChurchCommunityBuilder.Api.Groups.Sets {
             parameters.Add("id", id.ToString());
             return this.Execute<Group>("group_profile_from_id", parameters);
         }
+
+        public Group AddPersonToGroup(string individualID, string groupID, string status = "add") {
+            var paramters = new Dictionary<string, string>();
+            paramters.Add("id", individualID);
+            paramters.Add("group_id", groupID);
+            paramters.Add("status", status);
+
+            return this.Execute<Group>("add_individual_to_group", paramters);
+        }
     }
 }
