@@ -12,6 +12,7 @@ namespace ChurchCommunityBuilder.Api.Realms {
         }
 
         private ChurchCommunityBuilder.Api.Groups.Sets.Profiles _groupProfilesSet;
+        private ChurchCommunityBuilder.Api.Groups.Sets.PublicGroups _publicGroupsSet;
 
         #region Sets
         public ChurchCommunityBuilder.Api.Groups.Sets.Profiles GroupProfiles {
@@ -21,6 +22,16 @@ namespace ChurchCommunityBuilder.Api.Realms {
                 }
 
                 return _groupProfilesSet;
+            }
+        }
+
+        public ChurchCommunityBuilder.Api.Groups.Sets.PublicGroups PublicGroups {
+            get {
+                if (_publicGroupsSet == null) {
+                    _publicGroupsSet = new Groups.Sets.PublicGroups(string.Format(API_URL, base.ChurchCode), base.UserName, base.Password);
+                }
+
+                return _publicGroupsSet;
             }
         }
 

@@ -15,6 +15,6 @@ namespace ChurchCommunityBuilder.Api.Entity {
 
         [XmlArrayItem("items", typeof(LookupType))]
         [XmlArray("item")]
-        public List<LookupType> Items { get; set; }
+        public new List<LookupType> Items { get; set; }
     }
 }
