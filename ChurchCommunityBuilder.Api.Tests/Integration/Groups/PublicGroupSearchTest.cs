@@ -14,8 +14,8 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration.Groups {
     public class PublicGroupSearchTest : BaseTest {
         [Test]
         public void integration_groups_search_groups() {
-            var groups = ApiClient.Groups.PublicGroups.Search(new GroupProfileQO());
-            groups.Groups.Count.ShouldBeGreaterThan(0);
+            var groups = ApiClient.Groups.PublicGroups.Search(new PublicGroupQO());
+            groups.Items.Count.ShouldBeGreaterThan(0);
         }
     }
 }

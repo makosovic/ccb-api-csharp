@@ -70,6 +70,7 @@
     <Compile Include="Integration\Financial\OnlineGifts\CreateTests.cs" />
     <Compile Include="Integration\Groups\ProfileGetTests.cs" />
     <Compile Include="Integration\Groups\ProfilesListTests.cs" />
+    <Compile Include="Integration\Groups\PublicGroupSearchTest.cs" />
     <Compile Include="Integration\HowTheyHeard\ListTests.cs" />
     <Compile Include="Integration\Individual\IndividualSearchTests.cs" />
     <Compile Include="Integration\Individual\LoginTests.cs" />

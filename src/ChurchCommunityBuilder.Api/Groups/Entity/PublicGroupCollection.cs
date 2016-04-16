@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 namespace ChurchCommunityBuilder.Api.Groups.Entity {
     public class PublicGroupCollection : Response {
         public PublicGroupCollection() {
-            this.Items = new List<Group>();
+            this.Items = new List<PublicGroup>();
         }
 
         [XmlArrayItem("item", typeof(PublicGroup))]

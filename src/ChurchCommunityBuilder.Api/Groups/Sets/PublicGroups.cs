@@ -10,7 +10,7 @@ namespace ChurchCommunityBuilder.Api.Groups.Sets {
     public class PublicGroups : BaseApiSet<PublicGroupCollection> {
         public PublicGroups(string baseUrl, string username, string password) : base(baseUrl, username, password) { }
 
-        public PublicGroupCollection Search(GroupProfileQO qo) {
+        public PublicGroupCollection Search(PublicGroupQO qo) {
             return this.Execute("group_search", qo);
         }
     }

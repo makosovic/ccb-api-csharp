@@ -93,8 +93,12 @@
     <Compile Include="Groups\Entity\Group.cs" />
     <Compile Include="Groups\Entity\GroupCollection.cs" />
     <Compile Include="Groups\Entity\Participant.cs" />
+    <Compile Include="Groups\Entity\PublicGroup.cs" />
+    <Compile Include="Groups\Entity\PublicGroupCollection.cs" />
     <Compile Include="Groups\QueryObject\GroupProfileQO.cs" />
+    <Compile Include="Groups\QueryObject\PublicGroupQO.cs" />
     <Compile Include="Groups\Sets\Profiles.cs" />
+    <Compile Include="Groups\Sets\PublicGroups.cs" />
     <Compile Include="People\Entity\Ability.cs" />
     <Compile Include="People\Entity\Address.cs" />
     <Compile Include="People\Entity\Campus.cs" />
