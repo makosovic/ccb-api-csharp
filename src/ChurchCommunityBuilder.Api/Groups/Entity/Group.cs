@@ -7,11 +7,27 @@ using System.Xml.Serialization;
 using ChurchCommunityBuilder.Api.Events.Entity;
 using ChurchCommunityBuilder.Api.Entity;
 using ChurchCommunityBuilder.Api.People.Entity;
+using ChurchCommunityBuilder.Api.Util;
 
 namespace ChurchCommunityBuilder.Api.Groups.Entity {
     [Serializable]
     [XmlRoot("group")]
     public class Group {
+        public Group() {
+            this.Campus = new Lookup();
+            this.MainLeader = new Participant();
+            this.Leaders = new List<Participant>();
+            this.Participants = new List<Participant>();
+            this.GroupType = new Lookup();
+            this.Department = new Lookup();
+            this.Area = new Lookup();
+            this.RegistrationForms = new List<RegistrationForm>();
+            this.Addresses = new List<Address>();
+            this.MeetingDay = new Lookup();
+            this.MeetingTime = new Lookup();
+            this.Creator = new Lookup();
+            this.Modifier = new Lookup();
+        }
         [XmlAttribute("id")]
         public int ID { get; set; }
 
@@ -175,6 +191,35 @@ namespace ChurchCommunityBuilder.Api.Groups.Entity {
                     _lastUpdatedDateString = value;
                 }
             }
+        }
+
+        public string GetFormValues() {
+            var formValues = new FormValuesBuilder();
+
+            if (!string.IsNullOrEmpty(this.Name)) {
+                formValues.Add("name", this.Name.Length > 50 ? this.Name.Substring(0, 50) : this.Name);
+            }
+            formValues.Add("campus_id", this.Campus.CCBID.ToString())
+                      .Add("main_leader_id", this.MainLeader.ID)
+                      .Add("description", this.Description);
+
+            if (this.GroupType.ID.HasValue) {
+                formValues.Add("group_type_id", this.GroupType.ID);
+            }
+
+            if (this.Department.ID.HasValue) {
+                formValues.Add("department_id", this.Department.ID);
+            }
+
+            if (this.Area.ID.HasValue) {
+                formValues.Add("area_id", this.Area.ID);
+            }
+
+            if (!string.IsNullOrEmpty(this.GroupCapacity)) {
+                formValues.Add("group_capacity", this.GroupCapacity);
+            }
+            
+            return formValues.ToString();
         }
     }
 }

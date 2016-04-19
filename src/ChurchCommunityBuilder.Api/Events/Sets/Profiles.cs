@@ -16,5 +16,14 @@ namespace ChurchCommunityBuilder.Api.Events.Sets {
             parameters.Add("include_guest_list", includeGuests.ToString());
             return this.Execute<Event>("event_profile", parameters);
         }
+
+        public Event AddPersonToEvent(string individualID, string eventID, string status = "add") {
+            var paramters = new Dictionary<string, string>();
+            paramters.Add("id", individualID);
+            paramters.Add("event_id", eventID);
+            paramters.Add("status", status);
+
+            return this.Execute<Event>("add_individual_to_event", paramters);
+        }
     }
 }
