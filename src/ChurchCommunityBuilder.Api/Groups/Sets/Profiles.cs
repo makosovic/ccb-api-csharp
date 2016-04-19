@@ -28,5 +28,13 @@ namespace ChurchCommunityBuilder.Api.Groups.Sets {
 
             return this.Execute<Group>("add_individual_to_group", paramters);
         }
+
+        public void RemovePersonFromGroup(string individualID, string groupID) {
+            var paramters = new Dictionary<string, string>();
+            paramters.Add("id", individualID);
+            paramters.Add("group_id", groupID);
+
+            this.Execute<Group>("remove_individual_from_group", paramters);
+        }
     }
 }
