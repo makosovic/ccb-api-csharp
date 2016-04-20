@@ -25,5 +25,15 @@ namespace ChurchCommunityBuilder.Api.Events.Sets {
 
             return this.Execute<Event>("add_individual_to_event", paramters);
         }
+
+        public Event Create(Event entity) {
+            var events = base.Create("create_event", entity.GetFormValues());
+
+            if (events != null && events.Events.Count > 0) {
+                return events.Events[0];
+            }
+
+            return null;
+        }
     }
 }
