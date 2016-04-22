@@ -27,13 +27,7 @@ namespace ChurchCommunityBuilder.Api.Events.Sets {
         }
 
         public Event Create(Event entity) {
-            var events = base.Create("create_event", entity.GetFormValues());
-
-            if (events != null && events.Events.Count > 0) {
-                return events.Events[0];
-            }
-
-            return null;
+            return base.Create<Event>("create_event", entity.GetFormValues());
         }
     }
 }

@@ -102,8 +102,8 @@ namespace ChurchCommunityBuilder.Api.Events.Entity {
                 formValues.Add("name", this.Name.Length > 50 ? this.Name.Substring(0, 50) : this.Name);
             }
             formValues.Add("group_id", this.Group.CCBID.ToString())
-                      .Add("start_date", this.StartDateTime)
-                      .Add("end_date", this.EndDateTime)
+                      .Add("start_date", this.StartDateTime.HasValue ? this.StartDateTime.Value.ToString("yyyy-MM-dd HH:mm:ss") : "")
+                      .Add("end_date", this.EndDateTime.HasValue ? this.EndDateTime.Value.ToString("yyyy-MM-dd HH:mm:ss") : "")
                       .Add("description", this.Description)
                       .Add("leader_notes", this.LeaderNotes)
                       .Add("setup_notes", this.Setup.Notes);

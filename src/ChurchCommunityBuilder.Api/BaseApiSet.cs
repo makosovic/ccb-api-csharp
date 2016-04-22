@@ -96,6 +96,15 @@ namespace ChurchCommunityBuilder.Api {
             return results.Data;
         }
 
+        internal S Create<S>(string serviceName, string formValues) where S : new() {
+            var createUrl = _baseUrl + "?srv=" + serviceName;
+            this._parameters = new Dictionary<string, string>();
+            var request = CreateRestRequest(Method.POST, createUrl);
+            request.AddParameter("application/x-www-form-urlencoded", formValues, ParameterType.RequestBody);
+            var results = ExecuteGenericRequest<S>(request);
+            return results.Data;
+        }
+
         internal T CreateWithXml(string serviceName, string xml) {
             var createUrl = _baseUrl + "?srv=" + serviceName;   
             this._parameters = new Dictionary<string, string>();
