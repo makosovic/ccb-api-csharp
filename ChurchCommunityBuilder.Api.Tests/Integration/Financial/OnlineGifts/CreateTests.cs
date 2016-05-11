@@ -22,6 +22,8 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration.Financial.OnlineGifts {
             onlineGift.IndividualID = 4103; // Barney Rubble
             onlineGift.GiftAmount = rnd.Next(3, 176);
             onlineGift.MerchantAuthorizationCode = "2346356";
+            onlineGift.MerchantTransactionID = "1235123465";
+            onlineGift.MerchantName = "52projects";
 
             var returnGift = base.ApiClient.Financials.OnlineGifts.Create(onlineGift);
             returnGift.ShouldNotBe(null);

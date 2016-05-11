@@ -17,22 +17,35 @@ namespace ChurchCommunityBuilder.Api.Financial.Entity {
         [XmlElement("amount")]
         public decimal GiftAmount { get; set; }
 
+        [XmlElement("merchant_transaction_id")]
         public string MerchantTransactionID { get; set; }
+        [XmlElement("merchant_authorization_code")]
         public string MerchantAuthorizationCode { get; set; }
+        [XmlElement("merchant_notes")]
         public string MerchantNotes { get; set; }
-        public DateTime? MerchantProcessDate { get; set; }        
+        [XmlElement("merchant_name")]
+        public string MerchantName { get; set; }
+        [XmlElement("merchant_process_date")]
+        public DateTime? MerchantProcessDate { get; set; }  
+        [XmlElement("first_name")]      
         public string FirstName { get; set; }
+        [XmlElement("last_name")]
         public string LastName { get; set; }
-        [XmlElement("address")]
+        [XmlElement("street_address")]
         public string StreetAddress { get; set; }
+        [XmlElement("city")]
         public string City { get; set; }
+        [XmlElement("state")]
         public string State { get; set; }
-        [XmlElement("postal_code")]
+        [XmlElement("zip")]
         public string Zip { get; set; }
+        [XmlElement("email")]
         public string Email { get; set; }
         [XmlElement("phone_number")]
         public string Phone { get; set; }
+        [XmlElement("campus_id")]
         public int? CampusID { get; set; }
+        [XmlElement("payment_method")]
         public string PaymentMethodType { get; set; }
         [XmlElement("confirmation_code")]
         public string ConfirmationCode { get; set; }
@@ -55,11 +68,15 @@ namespace ChurchCommunityBuilder.Api.Financial.Entity {
                       .Add("amount", this.GiftAmount.ToString("#.00", CultureInfo.InvariantCulture));
 
             if (!string.IsNullOrEmpty(this.MerchantTransactionID)) {
-                formValues.Add("merchant_transacction_id", this.MerchantTransactionID);
+                formValues.Add("merchant_transaction_id", this.MerchantTransactionID);
             }
 
             if (!string.IsNullOrEmpty(this.MerchantAuthorizationCode)) {
-                formValues.Add("merchant_authorization_code", this.LastName);
+                formValues.Add("merchant_authorization_code", this.MerchantAuthorizationCode);
+            }
+
+            if (!string.IsNullOrEmpty(this.MerchantName)) {
+                formValues.Add("merchant_name", this.MerchantName);
             }
 
             if (!string.IsNullOrEmpty(this.MerchantNotes)) {
