@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RestSharp;
 using RestSharp.Authenticators;
+using ChurchCommunityBuilder.Api.Extensions;
 
 namespace ChurchCommunityBuilder.Api {
     public class BaseApiSet<T> where T : new() {

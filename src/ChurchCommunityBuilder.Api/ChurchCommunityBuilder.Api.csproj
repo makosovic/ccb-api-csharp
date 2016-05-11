@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\..\52projects-library\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\52projects-library\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
@@ -87,6 +87,7 @@
     <Compile Include="Financial\Entity\Account.cs" />
     <Compile Include="Financial\Entity\AccountCollection.cs" />
     <Compile Include="Financial\Entity\OnlineGift.cs" />
+    <Compile Include="Financial\Entity\OnlineGiftCollection.cs" />
     <Compile Include="Financial\Sets\Accounts.cs" />
     <Compile Include="Financial\Sets\Batches.cs" />
     <Compile Include="Financial\Sets\OnlineGifts.cs" />
