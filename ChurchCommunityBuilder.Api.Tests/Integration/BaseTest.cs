@@ -15,7 +15,7 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration {
         public ApiClient ApiClient;
         [TestFixtureSetUp]
         public virtual void Setup() {
-            ApiClient = new ApiClient("multisite", "chadmeyer", "Psalms46:10");
+            ApiClient = new ApiClient("multisite", "focusmissions", "Psalms46:10");
         }
     }
 }
