@@ -200,7 +200,8 @@ namespace ChurchCommunityBuilder.Api.People.Entity {
                 .Add("membership_end", this.MembershipEnd.HasValue ? this.MembershipEnd.Value.ToString("yyyy-MM-dd") : "")
                 .Add("membership_type_id", this.MembershipType != null && this.MembershipType.ID > 0 ? this.MembershipType.ID.ToString() : "")
                 .Add("giving_number", this.GivingNumber)
-                .Add("allergies", this.Allergies);
+                .Add("allergies", this.Allergies)
+                .Add("marital_status", this.MaritalStatus);
 
             if (!string.IsNullOrEmpty(Email) && Email.Contains('@') && Email.Contains('.')) {
                 formValues.Add("email", this.Email);
