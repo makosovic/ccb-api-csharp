@@ -151,6 +151,18 @@ namespace ChurchCommunityBuilder.Api.People.Entity {
         [XmlElement("membership_type")]
         public Lookup MembershipType { get; set; }
 
+        [XmlArrayItem("user_defined_text_field", typeof(UserDefiniedTextField))]
+        [XmlArray("user_defined_text_fields")]
+        public List<UserDefiniedTextField> UserDefinedTextFields { get; set; }
+
+        [XmlArrayItem("user_defined_date_field", typeof(UserDefinedDateField))]
+        [XmlArray("user_defined_date_fields")]
+        public List<UserDefinedDateField> UserDefinedDateFields { get; set; }
+
+        [XmlArrayItem("user_defined_pulldown_field", typeof(UserDefinedPulldownField))]
+        [XmlArray("user_defined_pulldown_fields")]
+        public List<UserDefinedPulldownField> UserDefinedPulldownFields { get; set; }
+
         public string GetFormValues() {
             var formValues = new FormValuesBuilder();
 
