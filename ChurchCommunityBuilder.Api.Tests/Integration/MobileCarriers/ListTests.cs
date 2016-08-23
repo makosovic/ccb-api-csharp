@@ -9,7 +9,7 @@ using ChurchCommunityBuilder.Api;
 using ChurchCommunityBuilder.Api.People.Entity;
 using ChurchCommunityBuilder.Api.People.QueryObject;
 
-namespace ChurchCommunityBuilder.Api.Tests.Integration.MobeilCarriers {
+namespace ChurchCommunityBuilder.Api.Tests.Integration.MobileCarriers {
     [TestFixture]
     public class ListTests : BaseTest {
         [Test]

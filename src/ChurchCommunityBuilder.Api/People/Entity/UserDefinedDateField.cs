@@ -14,7 +14,7 @@ namespace ChurchCommunityBuilder.Api.People.Entity {
         [XmlElement("label")]
         public string Label { get; set; }
         [XmlElement("date")]
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
         [XmlElement("admin_only")]
         public bool AdminOnly { get; set; }
     }
