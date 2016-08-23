@@ -14,8 +14,8 @@ namespace ChurchCommunityBuilder.Api.People.Sets {
             return this.Execute("udf_grp_pulldown_1_list");
         }
 
-        public UserDefinedFieldCollection ListIndividual1() {
-            return this.Execute("udf_ind_pulldown_1_list");
+        public UserDefinedFieldCollection ListIndividual(string label) {
+            return this.Execute(label + "_list");
         }
     }
 }

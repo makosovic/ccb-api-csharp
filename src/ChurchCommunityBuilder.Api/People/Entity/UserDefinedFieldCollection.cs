@@ -9,11 +9,11 @@ using System.Xml.Serialization;
 namespace ChurchCommunityBuilder.Api.People.Entity {
     public class UserDefinedFieldCollection : Response {
         public UserDefinedFieldCollection() {
-            this.UserDefinedFields = new List<UserDefinedField>();
+            this.Items = new List<UserDefinedField>();
         }
 
-        [XmlArrayItem("campus", typeof(UserDefinedField))]
-        [XmlArray("campuses")]
-        public List<UserDefinedField> UserDefinedFields { get; set; }
+        [XmlArrayItem("item", typeof(UserDefinedField))]
+        [XmlArray("iteams")]
+        new public List<UserDefinedField> Items { get; set; }
     }
 }
