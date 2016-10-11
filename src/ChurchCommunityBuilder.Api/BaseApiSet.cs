@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,7 +53,9 @@ namespace ChurchCommunityBuilder.Api {
 
             foreach (var pair in qo.ToDictionary()) {
                 request.AddParameter(pair.Key, pair.Value);
+                Debug.Print("Key = " + pair.Key);
             }
+            Debug.Print("Dictionary Count = " + qo.ToDictionary().Count);
 
             var results = ExecuteRequest(request);
             return results.Data;
