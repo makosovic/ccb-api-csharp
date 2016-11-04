@@ -2,7 +2,7 @@
 using System.Xml.Serialization;
 using ChurchCommunityBuilder.Api.Entity;
 
-namespace ChurchCommunityBuilder.Api.Attendance.Entity
+namespace ChurchCommunityBuilder.Api.Events.Entity
 {
     public class AttendanceEventCollection : Response
     {

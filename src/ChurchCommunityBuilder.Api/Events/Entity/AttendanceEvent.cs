@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace ChurchCommunityBuilder.Api.Attendance.Entity
+namespace ChurchCommunityBuilder.Api.Events.Entity
 {
     
     [Serializable]

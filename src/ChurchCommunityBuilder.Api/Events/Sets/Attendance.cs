@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using ChurchCommunityBuilder.Api.Attendance.Entity;
-using ChurchCommunityBuilder.Api.Attendance.QueryObject;
+using ChurchCommunityBuilder.Api.Events.Entity;
+using ChurchCommunityBuilder.Api.Events.QueryObject;
 
-namespace ChurchCommunityBuilder.Api.Attendance.Sets
+namespace ChurchCommunityBuilder.Api.Events.Sets
 {
-    public class Profiles : BaseApiSet<AttendanceEventCollection>
+    public class Attendance : BaseApiSet<AttendanceEventCollection>
     {
-        public Profiles(string baseUrl, string username, string password) : base(baseUrl, username, password) { }
+        public Attendance(string baseUrl, string username, string password) : base(baseUrl, username, password) { }
 
         public AttendanceEventCollection List(AttendanceQO qo)
         {
