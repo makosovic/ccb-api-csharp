@@ -14,6 +14,7 @@ namespace ChurchCommunityBuilder.Api.Realms {
         private ChurchCommunityBuilder.Api.Events.Sets.Profiles _profilesSets;
         private ChurchCommunityBuilder.Api.Events.Sets.Calendar _calendarSets;
         private ChurchCommunityBuilder.Api.Events.Sets.Forms _formsSets;
+        private ChurchCommunityBuilder.Api.Events.Sets.Attendance _attendanceSets;
 
         #region Sets
         public ChurchCommunityBuilder.Api.Events.Sets.Profiles Profiles {
@@ -43,6 +44,19 @@ namespace ChurchCommunityBuilder.Api.Realms {
                 }
 
                 return _formsSets;
+            }
+        }
+
+        public ChurchCommunityBuilder.Api.Events.Sets.Attendance Attendance
+        {
+            get
+            {
+                if (_attendanceSets == null)
+                {
+                    _attendanceSets = new ChurchCommunityBuilder.Api.Events.Sets.Attendance(string.Format(API_URL, base.ChurchCode), base.UserName, base.Password);
+                }
+
+                return _attendanceSets;
             }
         }
         #endregion Sets
