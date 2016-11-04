@@ -52,6 +52,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiClient.cs" />
+    <Compile Include="Attendance\Entity\Attendee.cs" />
+    <Compile Include="Attendance\Entity\AttendeeCollection.cs" />
+    <Compile Include="Attendance\Entity\AttendanceEvent.cs" />
+    <Compile Include="Attendance\Entity\AttendanceEventCollection.cs" />
+    <Compile Include="Attendance\QueryObject\AttendanceQO.cs" />
+    <Compile Include="Attendance\Sets\Profiles.cs" />
     <Compile Include="Attributes\QOAttribute.cs" />
     <Compile Include="BaseApiSet.cs" />
     <Compile Include="Entity\BaseEntity.cs" />
