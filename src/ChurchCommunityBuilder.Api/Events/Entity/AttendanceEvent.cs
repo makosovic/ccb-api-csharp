@@ -26,7 +26,7 @@ namespace ChurchCommunityBuilder.Api.Events.Entity
         public List<Attendee> Attendees { get; set; }
 
         [XmlElement("head_count")]
-        public bool HeadCount { get; set; }
+        public int HeadCount { get; set; }
 
         //todo: add <topic/> <notes/> <prayer_requests/>
     }
