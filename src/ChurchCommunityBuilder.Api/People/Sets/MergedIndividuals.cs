@@ -15,7 +15,7 @@ namespace ChurchCommunityBuilder.Api.People.Sets {
         public MergedIndividualCollection List(DateTime modifiedSince)
         {
             var parameters = new Dictionary<string, string>();
-            parameters.Add("modified_since", modifiedSince.ToString());
+            parameters.Add("modified_since", modifiedSince.ToString("yyyy-MM-dd"));
             return this.Execute("merged_individuals", parameters);
         }
 
