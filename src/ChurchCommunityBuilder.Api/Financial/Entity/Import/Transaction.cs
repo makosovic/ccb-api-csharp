@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 using System.Xml.Serialization;
 
 namespace ChurchCommunityBuilder.Api.Financial.Entity.Import {
@@ -24,9 +20,6 @@ namespace ChurchCommunityBuilder.Api.Financial.Entity.Import {
 
         [XmlElement("date")]
         public DateTime Date { get; set; }
-
-        [XmlElement("grouping")]
-        public Lookup Grouping { get; set; }
 
         [XmlElement("payment_type")]
         public string PaymentType { get; set; }
