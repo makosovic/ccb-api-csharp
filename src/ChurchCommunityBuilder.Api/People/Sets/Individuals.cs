@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ChurchCommunityBuilder.Api;
 using ChurchCommunityBuilder.Api.People.Entity;
 using ChurchCommunityBuilder.Api.People.QueryObject;
 using ChurchCommunityBuilder.Api.Entity;
@@ -21,6 +17,19 @@ namespace ChurchCommunityBuilder.Api.People.Sets {
             var parameters = new Dictionary<string, string> {{"id", id.ToString()}};
 
             return this.Execute("execute_search", parameters);
+        }
+
+        public IndividualCollection List(IndividualQO qo)
+        {
+            return this.Execute("individual_profiles", qo);
+        }
+
+        public IndividualCollection List(DateTime lastModifiedDate, bool includeInactive)
+        {
+            var qo = new IndividualQO();
+            qo.ModifiedSince = lastModifiedDate;
+            qo.IncludeInactive = includeInactive;
+            return this.Execute("individual_profiles", qo);
         }
 
         public Individual Get(int id, bool includeInactive) {
