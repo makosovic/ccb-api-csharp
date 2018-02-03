@@ -33,9 +33,6 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration.Financial.Import {
                 },
                 PaymentType = "check",
                 Date = DateTime.UtcNow,
-                Grouping = new Lookup {
-                    ID = 1
-                },
                 TransactionDetails = new List<TransactionDetail> {
                     new TransactionDetail {
                         COA = new Lookup {

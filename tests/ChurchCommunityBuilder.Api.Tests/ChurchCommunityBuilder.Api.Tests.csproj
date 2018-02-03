@@ -73,6 +73,7 @@
     <Compile Include="Integration\Events\FormTests.cs" />
     <Compile Include="Integration\Family\FamilyListTest.cs" />
     <Compile Include="Integration\Financial\Accounts\ListTests.cs" />
+    <Compile Include="Integration\Financial\Batches\BatchesListTest.cs" />
     <Compile Include="Integration\Financial\Import\CreateTests.cs" />
     <Compile Include="Integration\Financial\OnlineGifts\CreateTests.cs" />
     <Compile Include="Integration\Groups\ProfileGetTests.cs" />
