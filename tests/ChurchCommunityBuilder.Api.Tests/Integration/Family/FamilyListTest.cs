@@ -20,7 +20,7 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration.Family {
 
             var results = base.ApiClient.People.Individuals.Search(qo);
 
-            var family = base.ApiClient.People.Families.Get(results.Individuals[0].Family.ID.Value);
+            var family = base.ApiClient.People.Families.Get(results.Data.Individuals[0].Family.ID.Value);
 
             family.ShouldNotBe(null);
         }
@@ -28,7 +28,7 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration.Family {
         [Test]
         public void integration_family_get_family_list() {
             var families = base.ApiClient.People.Families.List(DateTime.UtcNow.AddMonths(-3));
-            families.Families.Count.ShouldBeGreaterThan(0);
+            families.Data.Families.Count.ShouldBeGreaterThan(0);
         }
     }
 }

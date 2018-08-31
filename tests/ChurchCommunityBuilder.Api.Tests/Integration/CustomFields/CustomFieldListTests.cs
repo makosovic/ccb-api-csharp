@@ -16,7 +16,7 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration {
         public void integration_user_custom_field_list() {
             var results = base.ApiClient.People.CustomFields.List();
 
-            results.CustomFields.Count.ShouldBeGreaterThan(0);
+            results.Data.CustomFields.Count.ShouldBeGreaterThan(0);
         }
     }
 }

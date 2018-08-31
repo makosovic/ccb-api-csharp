@@ -10,7 +10,7 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration.Events {
         public void integration_calendars_get_calendar() {
             var qo = new Api.Events.QueryObject.CalendarQO { DateStart = new DateTime(2015, 10, 20), DateEnd = new DateTime(2015, 11, 1) };
             var events = base.ApiClient.Events.Calendar.List(qo);
-            events.Items.Count.ShouldBeGreaterThan(0);
+            events.Data.Items.Count.ShouldBeGreaterThan(0);
         }
     }
 }

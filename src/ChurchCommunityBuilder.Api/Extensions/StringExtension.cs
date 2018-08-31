@@ -38,5 +38,25 @@ namespace ChurchCommunityBuilder.Api.Extensions {
 
             return ret;
         }
+
+        public static int ToInt(this object text) {
+            if (text == null) {
+                return 0;
+            }
+
+            int result = 0;
+            int.TryParse(text.ToString(), out result);
+            return result;
+        }
+
+        public static long ToLong(this object text) {
+            if (text == null) {
+                return 0;
+            }
+
+            long result = 0;
+            long.TryParse(text.ToString(), out result);
+            return result;
+        }
     }
 }

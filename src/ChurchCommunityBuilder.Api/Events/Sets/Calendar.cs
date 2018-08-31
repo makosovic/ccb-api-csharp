@@ -11,7 +11,7 @@ namespace ChurchCommunityBuilder.Api.Events.Sets {
     public class Calendar : BaseApiSet<CalendarCollection> {
         public Calendar(string baseUrl, string username, string password) : base(baseUrl, username, password) { }
 
-        public CalendarCollection List(CalendarQO qo) {
+        public IChurchCommunityBuilderResponse<CalendarCollection> List(CalendarQO qo) {
             return this.Execute("public_calendar_listing", qo);
         }
     }

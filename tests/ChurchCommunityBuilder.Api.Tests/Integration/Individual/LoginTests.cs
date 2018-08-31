@@ -15,7 +15,7 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration.Individual {
         [Test]
         public void integration_indivdiual_login_with_success() {
             var result = base.ApiClient.People.Individuals.Login("52projects", "Psalms46:10");
-            result.ShouldBeGreaterThan(0);
+            result.Data.Individuals.Count().ShouldBeGreaterThan(0);
         }
     }
 }

@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using RestSharp;
 using RestSharp.Authenticators;
+using ChurchCommunityBuilder.Api.Entity;
+using ChurchCommunityBuilder.Api.Extensions;
 
 namespace ChurchCommunityBuilder.Api {
     public class BaseApiSet<T> where T : new() {
@@ -22,16 +24,16 @@ namespace ChurchCommunityBuilder.Api {
             _password = password;
         }
 
-        public T Execute(string serviceName) {
+        public IChurchCommunityBuilderResponse<T> Execute(string serviceName) {
             this._parameters = new Dictionary<string, string>();
             this._parameters.Add("srv", serviceName);
             var request = CreateRestRequest(Method.GET, _baseUrl);
 
             var results = ExecuteRequest(request);
-            return results.Data;
+            return results.ToChurchCommunityBuilderResponse();
         }
 
-        public T Execute(string serviceName, Dictionary<string, string> parameters) {
+        public IChurchCommunityBuilderResponse<T> Execute(string serviceName, Dictionary<string, string> parameters) {
             this._parameters = new Dictionary<string, string>();
             this._parameters.Add("srv", serviceName);
 
@@ -42,10 +44,10 @@ namespace ChurchCommunityBuilder.Api {
             var request = CreateRestRequest(Method.GET, _baseUrl);
 
             var results = ExecuteRequest(request);
-            return results.Data;
+            return results.ToChurchCommunityBuilderResponse();
         }
 
-        public T Execute(string serviceName, string formValues, Dictionary<string, string> parameters)
+        public IChurchCommunityBuilderResponse<T> Execute(string serviceName, string formValues, Dictionary<string, string> parameters)
         {
             var postUrl = _baseUrl + "?srv=" + serviceName;
 
@@ -57,10 +59,10 @@ namespace ChurchCommunityBuilder.Api {
 
             request.AddParameter("application/x-www-form-urlencoded", formValues, ParameterType.RequestBody);
             var results = ExecuteRequest(request);
-            return results.Data;
+            return results.ToChurchCommunityBuilderResponse();
         }
 
-        public T Execute(string serviceName, string formValues)
+        public IChurchCommunityBuilderResponse<T> Execute(string serviceName, string formValues)
         {
             var postUrl = _baseUrl + "?srv=" + serviceName;
 
@@ -69,10 +71,10 @@ namespace ChurchCommunityBuilder.Api {
 
             request.AddParameter("application/x-www-form-urlencoded", formValues, ParameterType.RequestBody);
             var results = ExecuteRequest(request);
-            return results.Data;
+            return results.ToChurchCommunityBuilderResponse();
         }
 
-        public T Execute(string serviceName, QueryObject qo) {
+        public IChurchCommunityBuilderResponse<T> Execute(string serviceName, QueryObject qo) {
             this._parameters = new Dictionary<string, string>();
             this._parameters.Add("srv", serviceName);
             var request = CreateRestRequest(Method.GET, _baseUrl);
@@ -82,10 +84,10 @@ namespace ChurchCommunityBuilder.Api {
             }
 
             var results = ExecuteRequest(request);
-            return results.Data;
+            return results.ToChurchCommunityBuilderResponse();
         }
 
-        public S Execute<S>(string serviceName, Dictionary<string, string> parameters) where S : new() {
+        public IChurchCommunityBuilderResponse<S> Execute<S>(string serviceName, Dictionary<string, string> parameters) where S : new() {
             this._parameters = new Dictionary<string, string>();
             this._parameters.Add("srv", serviceName);
 
@@ -96,11 +98,11 @@ namespace ChurchCommunityBuilder.Api {
             var request = CreateRestRequest(Method.GET, _baseUrl);
 
             var results = ExecuteGenericRequest<S>(request);
-            return results.Data;
+            return results.ToChurchCommunityBuilderResponse();
         }
         
 
-        internal T Update(string serviceName, string formValues, Dictionary<string, string> parameters) {
+        internal IChurchCommunityBuilderResponse<T> Update(string serviceName, string formValues, Dictionary<string, string> parameters) {
             var updateUrl = _baseUrl + "?srv=" + serviceName;
 
             foreach (var pair in parameters) {
@@ -112,34 +114,34 @@ namespace ChurchCommunityBuilder.Api {
 
             request.AddParameter("application/x-www-form-urlencoded", formValues, ParameterType.RequestBody);
             var results = ExecuteRequest(request);
-            return results.Data;
+            return results.ToChurchCommunityBuilderResponse();
         }
 
-        internal T Create(string serviceName, string formValues) {
+        internal IChurchCommunityBuilderResponse<T> Create(string serviceName, string formValues) {
             var createUrl = _baseUrl + "?srv=" + serviceName;
             this._parameters = new Dictionary<string, string>();
             var request = CreateRestRequest(Method.POST, createUrl);
             request.AddParameter("application/x-www-form-urlencoded", formValues, ParameterType.RequestBody);
             var results = ExecuteRequest(request);
-            return results.Data;
+            return results.ToChurchCommunityBuilderResponse();
         }
 
-        internal S Create<S>(string serviceName, string formValues) where S : new() {
+        internal IChurchCommunityBuilderResponse<S> Create<S>(string serviceName, string formValues) where S : new() {
             var createUrl = _baseUrl + "?srv=" + serviceName;
             this._parameters = new Dictionary<string, string>();
             var request = CreateRestRequest(Method.POST, createUrl);
             request.AddParameter("application/x-www-form-urlencoded", formValues, ParameterType.RequestBody);
             var results = ExecuteGenericRequest<S>(request);
-            return results.Data;
+            return results.ToChurchCommunityBuilderResponse();
         }
 
-        internal T CreateWithXml(string serviceName, string xml) {
+        internal IChurchCommunityBuilderResponse<T> CreateWithXml(string serviceName, string xml) {
             var createUrl = _baseUrl + "?srv=" + serviceName;   
             this._parameters = new Dictionary<string, string>();
             var request = CreateRestRequest(Method.POST, createUrl, "application/xml");
             request.AddParameter("application/xml", xml, ParameterType.RequestBody);
             var results = ExecuteRequest(request);
-            return results.Data;
+            return results.ToChurchCommunityBuilderResponse();
         }
 
         protected IRestResponse<T> ExecuteRequest(IRestRequest request) {

@@ -19,7 +19,7 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration.Individual {
             qo.LastName = "meyer";
 
             var results = base.ApiClient.People.Individuals.Search(qo);
-            var updatedIndividual = base.ApiClient.People.Individuals.Update(results.Individuals[0]);
+            var updatedIndividual = base.ApiClient.People.Individuals.Update(results.Data.Individuals[0]);
 
             updatedIndividual.ShouldNotBe(null);
         }
@@ -31,11 +31,13 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration.Individual {
             qo.LastName = "meyer";
 
             var results = base.ApiClient.People.Individuals.Search(qo);
-            var indiviudal = results.Individuals[0];
+            var indiviudal = results.Data.Individuals[0];
             indiviudal.Email = "churchdatabase.com";
             var updatedIndividual = base.ApiClient.People.Individuals.Update(indiviudal);
 
-            updatedIndividual.Email.ShouldNotStartWith("churchdatabase.com");
+            var individual = updatedIndividual.Data.Individuals[0];
+
+            individual.Email.ShouldNotStartWith("churchdatabase.com");
         }
     }
 }

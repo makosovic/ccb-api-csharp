@@ -16,7 +16,7 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration.People {
             };
 
             var results = base.ApiClient.People.Individuals.Search(qo);
-            results.Individuals.Count.ShouldBe(1);
+            results.Data.Individuals.Count.ShouldBe(1);
         }
     }
 }

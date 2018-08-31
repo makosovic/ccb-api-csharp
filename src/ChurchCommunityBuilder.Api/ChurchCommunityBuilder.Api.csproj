@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiClient.cs" />
+    <Compile Include="Entity\ChurchCommunityBuilderResponse.cs" />
     <Compile Include="Events\Entity\Attendee.cs" />
     <Compile Include="Events\Entity\AttendeeCollection.cs" />
     <Compile Include="Events\Entity\AttendanceEvent.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Events\Entity\Form.cs" />
     <Compile Include="Events\Entity\FormCollection.cs" />
     <Compile Include="Events\Sets\Forms.cs" />
+    <Compile Include="Extensions\RestSharpExtensions.cs" />
     <Compile Include="Financial\Entity\BatchCollection.cs" />
     <Compile Include="Financial\Entity\Import\Batch.cs" />
     <Compile Include="Entity\Error.cs" />
@@ -180,9 +182,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

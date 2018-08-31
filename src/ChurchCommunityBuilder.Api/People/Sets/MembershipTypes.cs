@@ -10,7 +10,7 @@ namespace ChurchCommunityBuilder.Api.People.Sets {
     public class MembershipTypes : BaseApiSet<LookupTypeCollection> {
         public MembershipTypes(string baseUrl, string username, string password) : base(baseUrl, username, password) { }
 
-        public LookupTypeCollection List() {
+        public IChurchCommunityBuilderResponse<LookupTypeCollection> List() {
             return this.Execute("membership_type_list");
         }
     }

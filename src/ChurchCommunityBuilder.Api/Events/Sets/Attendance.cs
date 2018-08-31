@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ChurchCommunityBuilder.Api.Entity;
 using ChurchCommunityBuilder.Api.Events.Entity;
 using ChurchCommunityBuilder.Api.Events.QueryObject;
 
@@ -9,12 +10,12 @@ namespace ChurchCommunityBuilder.Api.Events.Sets
     {
         public Attendance(string baseUrl, string username, string password) : base(baseUrl, username, password) { }
 
-        public AttendanceEventCollection List(AttendanceQO qo)
+        public IChurchCommunityBuilderResponse<AttendanceEventCollection> List(AttendanceQO qo)
         {
             return this.Execute("attendance_profiles", qo);
         }
 
-        public AttendanceEvent Get(int id, DateTime occurrence)
+        public IChurchCommunityBuilderResponse<AttendanceEvent> Get(int id, DateTime occurrence)
         {
             var parameters = new Dictionary<string, string>();
             parameters.Add("id", id.ToString());

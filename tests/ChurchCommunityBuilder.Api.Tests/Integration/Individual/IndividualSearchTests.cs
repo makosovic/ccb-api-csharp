@@ -20,8 +20,8 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration {
 
             var results = base.ApiClient.People.Individuals.Search(qo);
 
-            results.Individuals.Count.ShouldBeGreaterThan(0);
-            var individual = results.Individuals[0];
+            results.Data.Individuals.Count.ShouldBeGreaterThan(0);
+            var individual = results.Data.Individuals[0];
             
             individual.FamilyMembers.Count.ShouldBeGreaterThan(0);
         }
@@ -34,7 +34,7 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration {
 
             var results = base.ApiClient.People.Individuals.Search(qo);
 
-            results.Individuals.Count.ShouldBeGreaterThan(1);
+            results.Data.Individuals.Count.ShouldBeGreaterThan(1);
         }
 
         [Test]
@@ -45,7 +45,7 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration {
 
             var results = base.ApiClient.People.Individuals.Search(qo);
 
-            results.Individuals.Count.ShouldBeGreaterThan(0);
+            results.Data.Individuals.Count.ShouldBeGreaterThan(0);
         }
 
         [Test]
@@ -55,7 +55,7 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration {
 
             var results = base.ApiClient.People.Individuals.Search(qo);
 
-            results.Individuals.Count.ShouldBeGreaterThan(0);
+            results.Data.Individuals.Count.ShouldBeGreaterThan(0);
         }
     }
 }

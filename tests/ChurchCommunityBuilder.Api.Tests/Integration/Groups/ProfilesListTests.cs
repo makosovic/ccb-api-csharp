@@ -19,8 +19,8 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration.Groups {
             for (int i = 1; i < 100; i++) {
                 var qo = new GroupProfileQO { IncludeParticipants = false, RecordsPerPage = 5, PageNumber = 65 };
                 var results = base.ApiClient.Groups.GroupProfiles.List(qo);
-                groups.AddRange(results.Groups);
-                results.Groups.Count.ShouldBeGreaterThan(0);
+                groups.AddRange(results.Data.Groups);
+                results.Data.Groups.Count.ShouldBeGreaterThan(0);
             }
         }
     }

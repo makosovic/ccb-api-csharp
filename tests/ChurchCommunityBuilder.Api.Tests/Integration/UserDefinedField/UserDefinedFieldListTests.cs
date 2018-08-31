@@ -16,14 +16,14 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration {
         public void integration_user_defined_field_list_group_1() {
             var results = base.ApiClient.People.UserDefinedFields.ListGroup1();
 
-            results.Items.Count.ShouldBeGreaterThan(0);
+            results.Data.Items.Count.ShouldBeGreaterThan(0);
         }
 
         [Test]
         public void integration_user_defined_field_list_ind_1() {
             var results = base.ApiClient.People.UserDefinedFields.ListIndividual("udf_ind_pulldown_1");
 
-            results.Items.Count.ShouldBeGreaterThan(0);
+            results.Data.Items.Count.ShouldBeGreaterThan(0);
         }
     }
 }

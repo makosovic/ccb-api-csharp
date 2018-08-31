@@ -5,16 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using ChurchCommunityBuilder.Api.Groups.QueryObject;
 using ChurchCommunityBuilder.Api.Groups.Entity;
+using ChurchCommunityBuilder.Api.Entity;
 
 namespace ChurchCommunityBuilder.Api.Groups.Sets {
     public class GroupParticipants : BaseApiSet<GroupParticipantCollection> {
         public GroupParticipants(string baseUrl, string username, string password) : base(baseUrl, username, password) { }
         
-        public GroupParticipantCollection List(GroupParticipantQO qo) {
+        public IChurchCommunityBuilderResponse<GroupParticipantCollection> List(GroupParticipantQO qo) {
             return this.Execute("group_participants", qo);
         }
 
-        public GroupParticipantCollection Get(int id, bool includeInactive = false, DateTime? startDate = null)
+        public IChurchCommunityBuilderResponse<GroupParticipantCollection> Get(int id, bool includeInactive = false, DateTime? startDate = null)
         {
             var parameters = new Dictionary<string, string>
             {
