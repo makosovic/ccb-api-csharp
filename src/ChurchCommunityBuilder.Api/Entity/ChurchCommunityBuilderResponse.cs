@@ -32,6 +32,8 @@ namespace ChurchCommunityBuilder.Api.Entity {
         public int RateLimitRemaining { get; set; }
 
         public DateTime RateLimitReset { get; set; }
+
+        public int? RetryAfter { get; set; }
     }
 
     public class ChurchCommunityBuilderResponse<T> : ChurchCommunityBuilderResponse, IChurchCommunityBuilderResponse<T> where T : new() {
