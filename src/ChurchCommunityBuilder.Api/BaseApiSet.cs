@@ -148,14 +148,6 @@ namespace ChurchCommunityBuilder.Api {
             var client = new RestClient(_baseUrl);
             client.Authenticator = new HttpBasicAuthenticator(this._username, this._password);
             var response = client.Execute<T>(request);
-
-            if ((int)response.StatusCode > 300) {
-                throw new Exception(response.StatusDescription);
-            }
-            else if (!string.IsNullOrEmpty(response.ErrorMessage)) {
-                throw new Exception(response.ErrorMessage);
-            }
-
             return response;
         }
 
@@ -163,13 +155,6 @@ namespace ChurchCommunityBuilder.Api {
             var client = new RestClient(_baseUrl);
             client.Authenticator = new HttpBasicAuthenticator(this._username, this._password);
             var response = client.Execute<S>(request);
-
-            if ((int)response.StatusCode > 300) {
-                throw new Exception(response.StatusDescription);
-            }
-            else if (!string.IsNullOrEmpty(response.ErrorMessage)) {
-                throw new Exception(response.ErrorMessage);
-            }
 
             return response;
         }

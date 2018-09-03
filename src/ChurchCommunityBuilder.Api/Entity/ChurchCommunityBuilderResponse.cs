@@ -13,6 +13,8 @@ namespace ChurchCommunityBuilder.Api.Entity {
         int RateLimitRemaining { get; set; }
 
         DateTime RateLimitReset { get; set; }
+
+        int? RetryAfter { get; set; }
     }
     public interface IChurchCommunityBuilderResponse<T> : IChurchCommunityBuilderResponse {
         T Data { get; set; }
