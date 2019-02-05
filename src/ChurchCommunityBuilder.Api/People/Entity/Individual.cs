@@ -141,6 +141,9 @@ namespace ChurchCommunityBuilder.Api.People.Entity {
         [XmlElement("deceased")]
         public DateTime? Deceased { get; set; }
 
+        [XmlElement("limited_access_user")]
+        public bool LimitedAccessUser { get; set; }
+
         [XmlElement("membership_date")]
         public DateTime? MembershipDate { get; set; }
 
