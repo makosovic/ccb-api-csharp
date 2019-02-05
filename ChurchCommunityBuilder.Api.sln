@@ -1,16 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChurchCommunityBuilder.Api", "src\ChurchCommunityBuilder.Api\ChurchCommunityBuilder.Api.csproj", "{2D4E6F4D-69D6-4BF3-AB51-97F172171E6A}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{82F89990-35C7-4B38-8408-965F5A1AA5FC}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7537BBD3-17E7-466D-96FD-C14CF14E2446}"
 EndProject
@@ -49,5 +42,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{2D4E6F4D-69D6-4BF3-AB51-97F172171E6A} = {7537BBD3-17E7-466D-96FD-C14CF14E2446}
 		{8DE11320-C493-452B-8406-60F61B53A6E1} = {A5EBB4BB-C854-4697-8D4F-8657FB2C5B37}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9E66802-F127-4C33-BF2E-ECA608BF3C65}
 	EndGlobalSection
 EndGlobal

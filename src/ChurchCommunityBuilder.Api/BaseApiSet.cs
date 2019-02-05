@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 using RestSharp;
 using RestSharp.Authenticators;
 using ChurchCommunityBuilder.Api.Entity;
 using ChurchCommunityBuilder.Api.Extensions;
+using System.IO;
 
 namespace ChurchCommunityBuilder.Api {
     public class BaseApiSet<T> where T : new() {
@@ -135,11 +133,23 @@ namespace ChurchCommunityBuilder.Api {
             return results.ToChurchCommunityBuilderResponse();
         }
 
-        internal IChurchCommunityBuilderResponse<T> CreateWithXml(string serviceName, string xml) {
+        internal IChurchCommunityBuilderResponse<T> ImportXml(string serviceName, string xml) {
             var createUrl = _baseUrl + "?srv=" + serviceName;   
-            this._parameters = new Dictionary<string, string>();
-            var request = CreateRestRequest(Method.POST, createUrl, "application/xml");
-            request.AddParameter("application/xml", xml, ParameterType.RequestBody);
+            var request = CreateRestRequest(Method.POST, createUrl);
+            var byteArray = Encoding.ASCII.GetBytes(xml);
+            request.Files.Add(new FileParameter 
+            { 
+                Name = "filedata", 
+                Writer = (s) => 
+                { 
+                    var stream = new MemoryStream(byteArray); 
+                    stream.CopyTo(s); 
+                    stream.Dispose(); 
+                }, 
+                FileName = "filedata", 
+                ContentType = "text/xml", 
+                ContentLength = byteArray.Length 
+            });
             var results = ExecuteRequest(request);
             return results.ToChurchCommunityBuilderResponse();
         }

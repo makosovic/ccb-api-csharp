@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace ChurchCommunityBuilder.Api.Financial.Entity.Import {
-    [XmlRoot("batch")]
-    public class Batch {
-        public Batch() {
+namespace ChurchCommunityBuilder.Api.Financial.Entity.Import
+{
+    public class Batch
+    {
+        public Batch()
+        {
             this.Transactions = new List<Transaction>();
         }
 
@@ -38,32 +38,40 @@ namespace ChurchCommunityBuilder.Api.Financial.Entity.Import {
         [XmlArray("transactions")]
         public List<Transaction> Transactions { get; set; }
 
-        public string ToXml() {
+        public string ToXml()
+        {
             string ret = "";
 
-            Type serializableObjectType = this.GetType();
+            var xmlObject = new BatchApiWrapper(this);
 
-            using (System.IO.StringWriter output = new System.IO.StringWriter(new System.Text.StringBuilder())) {
-                System.Xml.Serialization.XmlSerializer s = new System.Xml.Serialization.XmlSerializer(serializableObjectType);
-                System.Xml.Serialization.XmlSerializerNamespaces xsn = new System.Xml.Serialization.XmlSerializerNamespaces();
+            Type serializableObjectType = xmlObject.GetType();
+
+            using (System.IO.StringWriter output = new System.IO.StringWriter(new StringBuilder()))
+            {
+                XmlSerializer s = new XmlSerializer(serializableObjectType);
+                XmlSerializerNamespaces xsn = new XmlSerializerNamespaces();
                 xsn.Add("", "");
-
-
-                // get a list of the xml type attributes so that we can clean up the xml. In other words. remove extra namespace text.
-                object[] attributes = serializableObjectType.GetCustomAttributes(typeof(System.Xml.Serialization.XmlTypeAttribute), false);
-                if (attributes != null) {
-                    System.Xml.Serialization.XmlTypeAttribute xta;
-                    for (int i = 0; i < attributes.Length; i++) {
-                        xta = (System.Xml.Serialization.XmlTypeAttribute)attributes[i];
-                        //xsn.Add("ns" + 1, xta.Namespace);
-                    }
-                }
-
-                s.Serialize(output, this, xsn);
+                s.Serialize(output, xmlObject, xsn);
                 ret = output.ToString().Replace("utf-16", "utf-8").Trim();
             }
 
             return ret;
         }
+    }
+
+    [XmlRoot("ccbapi")]
+    public class BatchApiWrapper
+    {
+        public BatchApiWrapper()
+        {
+        }
+
+        public BatchApiWrapper(Batch batch)
+        {
+            Batch = batch;
+        }
+
+        [XmlElement("batch")]
+        public Batch Batch { get; set; }
     }
 }
