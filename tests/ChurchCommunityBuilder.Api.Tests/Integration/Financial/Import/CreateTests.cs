@@ -45,7 +45,7 @@ namespace ChurchCommunityBuilder.Api.Tests.Integration.Financial.Import {
                 }
             });
 
-            var returnBatch = base.ApiClient.Financials.Batches.Create(batch);
+            var returnBatch = base.ApiClient.Financials.Batches.Import(batch);
             returnBatch.ShouldNotBe(null);
         }
     }
