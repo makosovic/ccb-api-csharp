@@ -9,11 +9,14 @@ using ChurchCommunityBuilder.Api.Entity;
 using ChurchCommunityBuilder.Api.People.Entity;
 using ChurchCommunityBuilder.Api.Util;
 
-namespace ChurchCommunityBuilder.Api.Groups.Entity {
+namespace ChurchCommunityBuilder.Api.Groups.Entity
+{
     [Serializable]
     [XmlRoot("group")]
-    public class Group {
-        public Group() {
+    public class Group
+    {
+        public Group()
+        {
             this.Campus = new Lookup();
             this.MainLeader = new Participant();
             this.Leaders = new List<Participant>();
@@ -123,21 +126,27 @@ namespace ChurchCommunityBuilder.Api.Groups.Entity {
         public Lookup Modifier { get; set; }
 
         [XmlIgnore]
-        public DateTime? CreatedDate {
-            get {
+        public DateTime? CreatedDate
+        {
+            get
+            {
                 DateTime createdDate = DateTime.MinValue;
 
-                if (DateTime.TryParse(_createdDateString, out createdDate)) {
+                if (DateTime.TryParse(_createdDateString, out createdDate))
+                {
                     return createdDate;
                 }
 
                 return null;
             }
-            set {
-                if (value.HasValue) {
+            set
+            {
+                if (value.HasValue)
+                {
                     _createdDateString = value.Value.ToString();
                 }
-                else {
+                else
+                {
                     _createdDateString = string.Empty;
                 }
             }
@@ -145,41 +154,53 @@ namespace ChurchCommunityBuilder.Api.Groups.Entity {
 
         private string _createdDateString = string.Empty;
         [XmlElement("created")]
-        public string Created {
-            get {
-                if (!string.IsNullOrEmpty(_createdDateString)) {
+        public string Created
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(_createdDateString))
+                {
                     DateTime dt = DateTime.Now;
 
-                    if (DateTime.TryParse(_createdDateString, out dt)) {
+                    if (DateTime.TryParse(_createdDateString, out dt))
+                    {
                         _createdDateString = dt.ToString("s");
                     }
                 }
 
                 return _createdDateString;
             }
-            set {
-                if (value != null) {
+            set
+            {
+                if (value != null)
+                {
                     _createdDateString = value;
                 }
             }
         }
 
         [XmlIgnore]
-        public DateTime? ModifiedDate {
-            get {
+        public DateTime? ModifiedDate
+        {
+            get
+            {
                 DateTime lastUpdatedDate = DateTime.MinValue;
 
-                if (DateTime.TryParse(_lastUpdatedDateString, out lastUpdatedDate)) {
+                if (DateTime.TryParse(_lastUpdatedDateString, out lastUpdatedDate))
+                {
                     return lastUpdatedDate;
                 }
 
                 return null;
             }
-            set {
-                if (value.HasValue) {
+            set
+            {
+                if (value.HasValue)
+                {
                     _lastUpdatedDateString = value.Value.ToString();
                 }
-                else {
+                else
+                {
                     _lastUpdatedDateString = string.Empty;
                 }
             }
@@ -187,51 +208,105 @@ namespace ChurchCommunityBuilder.Api.Groups.Entity {
 
         private string _lastUpdatedDateString = string.Empty;
         [XmlElement("modified")]
-        public string Modified {
-            get {
-                if (!string.IsNullOrEmpty(_lastUpdatedDateString)) {
+        public string Modified
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(_lastUpdatedDateString))
+                {
                     DateTime dt = DateTime.Now;
 
-                    if (DateTime.TryParse(_lastUpdatedDateString, out dt)) {
+                    if (DateTime.TryParse(_lastUpdatedDateString, out dt))
+                    {
                         _lastUpdatedDateString = dt.ToString("s");
                     }
                 }
 
                 return _lastUpdatedDateString;
             }
-            set {
-                if (value != null) {
+            set
+            {
+                if (value != null)
+                {
                     _lastUpdatedDateString = value;
                 }
             }
         }
 
-        public string GetFormValues() {
+        public Dictionary<string, string> GetAsParameters()
+        {
+            var parameters = new Dictionary<string, string> { };
+
+            if (!string.IsNullOrEmpty(this.Name))
+            {
+                parameters.Add("name", this.Name.Length > 50 ? this.Name.Substring(0, 50) : this.Name);
+            }
+
+            parameters.Add("campus_id", this.Campus.CCBID.ToString());
+            parameters.Add("main_leader_id", this.MainLeader.ID.ToString());
+            parameters.Add("description", this.Description);
+            parameters.Add("listed", this.Listed.ToString());
+            parameters.Add("public_search_listed", this.PublicSearchListed.ToString());
+
+            if (this.GroupType.ID.HasValue)
+            {
+                parameters.Add("group_type_id", this.GroupType.ID.ToString());
+            }
+
+            if (this.Department.ID.HasValue)
+            {
+                parameters.Add("department_id", this.Department.ID.ToString());
+            }
+
+            if (this.Area.ID.HasValue)
+            {
+                parameters.Add("area_id", this.Area.ID.ToString());
+            }
+
+            if (!string.IsNullOrEmpty(this.GroupCapacity))
+            {
+                parameters.Add("group_capacity", this.GroupCapacity);
+            }
+
+            if (this.Addresses != null && this.Addresses.Count > 0)
+            {
+                foreach (var current in Addresses)
+                {
+                    var addressType = current.Type;
+                    var addressLine = current.Line1;
+
+                    if (!string.IsNullOrEmpty(current.Line2) && !current.Line2.StartsWith(current.City))
+                    {
+                        addressLine += " " + current.Line2;
+                    }
+
+                    parameters.Add(string.Format("{0}_street_address", current.Type), addressLine);
+                    parameters.Add(string.Format("{0}_city", current.Type), current.City);
+                    if (!string.IsNullOrEmpty(current.State))
+                    {
+                        parameters.Add(string.Format("{0}_state", current.Type), current.State.ToUpper());
+                    }
+                    parameters.Add(string.Format("{0}_zip", current.Type), current.Zip);
+
+                    if (current.Country != null)
+                    {
+                        parameters.Add(string.Format("{0}_country", current.Type), current.Country.Code.ToUpper());
+                    }
+                }
+            }
+
+            return parameters;
+        }
+
+        public string GetFormValues()
+        {
             var formValues = new FormValuesBuilder();
 
-            if (!string.IsNullOrEmpty(this.Name)) {
-                formValues.Add("name", this.Name.Length > 50 ? this.Name.Substring(0, 50) : this.Name);
-            }
-            formValues.Add("campus_id", this.Campus.CCBID.ToString())
-                      .Add("main_leader_id", this.MainLeader.ID)
-                      .Add("description", this.Description)
-                      .Add("listed", this.Listed)
-                      .Add("public_search_listed", this.PublicSearchListed);
+            var parameters = GetAsParameters();
 
-            if (this.GroupType.ID.HasValue) {
-                formValues.Add("group_type_id", this.GroupType.ID);
-            }
-
-            if (this.Department.ID.HasValue) {
-                formValues.Add("department_id", this.Department.ID);
-            }
-
-            if (this.Area.ID.HasValue) {
-                formValues.Add("area_id", this.Area.ID);
-            }
-
-            if (!string.IsNullOrEmpty(this.GroupCapacity)) {
-                formValues.Add("group_capacity", this.GroupCapacity);
+            foreach (var parameter in parameters)
+            {
+                formValues.Add(parameter.Key, parameter.Value);
             }
 
             return formValues.ToString();
