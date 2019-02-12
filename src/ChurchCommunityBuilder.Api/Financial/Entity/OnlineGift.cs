@@ -49,6 +49,8 @@ namespace ChurchCommunityBuilder.Api.Financial.Entity {
         public string PaymentMethodType { get; set; }
         [XmlElement("confirmation_code")]
         public string ConfirmationCode { get; set; }
+        [XmlElement("transaction_date")]
+        public DateTime? TransactionDate { get; set; }
 
         public string GetFormValues() {
             var formValues = CreateFormValues();
@@ -94,7 +96,7 @@ namespace ChurchCommunityBuilder.Api.Financial.Entity {
                 formValues.Add("last_name", this.LastName);
             }
             if (!string.IsNullOrEmpty(this.StreetAddress)) {
-                formValues.Add("stret_address", this.StreetAddress);
+                formValues.Add("street_address", this.StreetAddress);
             }
             if (!string.IsNullOrEmpty(this.City)) {
                 formValues.Add("city", this.City);
@@ -116,6 +118,11 @@ namespace ChurchCommunityBuilder.Api.Financial.Entity {
             }
             if (!string.IsNullOrEmpty(this.PaymentMethodType)) {
                 formValues.Add("payment_method_type", this.PaymentMethodType);
+            }
+
+            if (this.TransactionDate.HasValue)
+            {
+                formValues.Add("transaction_date", this.TransactionDate.Value.ToString("yyyy-MM-dd"));
             }
 
             return formValues;
