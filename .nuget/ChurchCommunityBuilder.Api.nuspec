@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>ChurchCommunityBuilder.Api</id>
+    <version>1.0.5.2</version>
+    <title>ChurchCommunityBuilder.Api</title>
+    <authors>Kalon Creative</authors>
+    <description>A .Net C# wrapper for the Church Community Builder API</description>
+    <dependencies>
+        <dependency id="Newtonsoft.Json" version="9.0.1" />
+        <dependency id="RestSharp" version="105.2.3" />
+    </dependencies>
+  </metadata>
+</package>
