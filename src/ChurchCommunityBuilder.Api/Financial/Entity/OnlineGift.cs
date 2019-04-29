@@ -67,7 +67,7 @@ namespace ChurchCommunityBuilder.Api.Financial.Entity {
 
             formValues.Add("coa_category_id", this.AccountID.ToString())
                       .Add("individual_id", this.IndividualID.ToString())
-                      .Add("amount", this.GiftAmount.ToString("#.00", CultureInfo.InvariantCulture));
+                      .Add("amount", this.GiftAmount.ToString("N2", CultureInfo.InvariantCulture));
 
             if (!string.IsNullOrEmpty(this.MerchantTransactionID)) {
                 formValues.Add("merchant_transaction_id", this.MerchantTransactionID);
