@@ -12,6 +12,8 @@ namespace ChurchCommunityBuilder.Api.Realms {
         }
 
         private ChurchCommunityBuilder.Api.Groups.Sets.Profiles _groupProfilesSet;
+        private ChurchCommunityBuilder.Api.Groups.Sets.GroupTypes _groupTypesSet;
+        private ChurchCommunityBuilder.Api.Groups.Sets.GroupDepartments _groupDepartmentsSet;
         private ChurchCommunityBuilder.Api.Groups.Sets.PublicGroups _publicGroupsSet;
         private ChurchCommunityBuilder.Api.Groups.Sets.GroupParticipants _groupParticipants;
 
@@ -46,6 +48,32 @@ namespace ChurchCommunityBuilder.Api.Realms {
                 }
 
                 return _groupParticipants;
+            }
+        }
+
+        public ChurchCommunityBuilder.Api.Groups.Sets.GroupTypes GroupTypes
+        {
+            get
+            {
+                if (_groupTypesSet == null)
+                {
+                    _groupTypesSet = new Groups.Sets.GroupTypes(string.Format(API_URL, base.ChurchCode), base.UserName, base.Password);
+                }
+
+                return _groupTypesSet;
+            }
+        }
+
+        public ChurchCommunityBuilder.Api.Groups.Sets.GroupDepartments GroupDepartments
+        {
+            get
+            {
+                if (_groupDepartmentsSet == null)
+                {
+                    _groupDepartmentsSet = new Groups.Sets.GroupDepartments(string.Format(API_URL, base.ChurchCode), base.UserName, base.Password);
+                }
+
+                return _groupDepartmentsSet;
             }
         }
 
