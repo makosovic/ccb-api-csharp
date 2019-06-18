@@ -116,6 +116,8 @@
     <Compile Include="Groups\QueryObject\GroupParticipantQO.cs" />
     <Compile Include="Groups\QueryObject\GroupProfileQO.cs" />
     <Compile Include="Groups\QueryObject\PublicGroupQO.cs" />
+    <Compile Include="Groups\Sets\GroupDepartments.cs" />
+    <Compile Include="Groups\Sets\GroupTypes.cs" />
     <Compile Include="Groups\Sets\Profiles.cs" />
     <Compile Include="Groups\Sets\GroupParticipants.cs" />
     <Compile Include="Groups\Sets\PublicGroups.cs" />
